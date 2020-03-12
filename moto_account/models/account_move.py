@@ -41,7 +41,7 @@ class AccountMove(models.Model):
     def _validate_sequence(self):
         # group refund moves by its journal
         journals = {}
-        for move in self.filtered(lambda m: m.journal_id):
+        for move in self.filtered(lambda m: m.journal_id and m.journal_id.type == 'sale'):
             if move.journal_id not in journals:
                 journals[move.journal_id] = self.env['account.move']
             journals[move.journal_id] |= move
