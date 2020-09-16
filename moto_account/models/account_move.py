@@ -12,16 +12,17 @@ class AccountMove(models.Model):
     def _reverse_move_vals(self, default_values, cancel=True):
         # we want to pass in a different account for each move lines
         move_vals = super(AccountMove, self)._reverse_move_vals(default_values, cancel=cancel)
-        for line_command in move_vals.get('line_ids', []):
-            line_vals = line_command[2]
-            if line_vals.get('tax_ids'):
-                product_id = line_vals.get('product_id')
-                product = self.env['product.product'].browse(product_id)
-                account = product and product.categ_id and product.categ_id.property_account_refund_categ_id
-                if account:
-                    line_vals.update({
-                        'account_id': account.id,
-                    })
+        if self.type == 'out_invoice':
+            for line_command in move_vals.get('line_ids', []):
+                line_vals = line_command[2]
+                if line_vals.get('tax_ids'):
+                    product_id = line_vals.get('product_id')
+                    product = self.env['product.product'].browse(product_id)
+                    account = product and product.categ_id and product.categ_id.property_account_refund_categ_id
+                    if account:
+                        line_vals.update({
+                            'account_id': account.id,
+                        })
         return move_vals
 
     def post(self):
