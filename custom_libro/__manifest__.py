@@ -9,7 +9,7 @@
         Modulo para seleccionar los diarios contables para facturas recepciones y pagos de cliente, tanto de clientes como de proveedores.
     """,
 
-    'author': "Nodier Vasquez - OdooGEC,
+    'author': "Nodier Vasquez - OdooGEC",
     #'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
@@ -23,7 +23,7 @@
 
     # always loaded
     'data': [
-        #'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/views.xml',
     ],
     # only loaded in demonstration mode
