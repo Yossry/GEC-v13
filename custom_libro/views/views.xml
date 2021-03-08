@@ -1,0 +1,44 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="view_move_form_inherit">
+        <field name="name">account.move.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <!--xpath expr="//field[@name='journal']" position="after">
+                <field name="idea_ids" string="Number of ideas"/-->
+            <field name="journal_id" position="after">
+                <field name="journal_id" invisible="context.get('default_journal_id') and context.get('type', 'entry') != 'entry'" groups="account.group_account_user" options="{'no_create': True}" domain="[('type', '=?', invoice_filter_type_domain)]" attrs="{'readonly': [('name', '!=', '/')]}"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="custom_libro.action_window">
+      <field name="name">custom_libro window</field>
+      <field name="res_model">custom_libro.custom_libro</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="custom_libro.action_server">
+      <field name="name">custom_libro server</field>
+      <field name="model_id" ref="model_custom_libro_custom_libro"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+  </data>
+</odoo>
