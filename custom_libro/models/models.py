@@ -3,9 +3,8 @@ from odoo import models, fields, api
 
 
 class custom_libro(models.Model):
-    _name = 'diario'
-    _inherit = 'account.journal'
+    _inherit = 'account.move'
     
-    libro = fields.Char()
+    libro = fields.Char(string='Diario Contable')
     
    
