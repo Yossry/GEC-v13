@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="fname_lname_field_inherit_res_partner" model="ir.ui.view">
+    <field name="name">fname.lname.field.inherit.res.partner</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+
+       <xpath expr="//div[@class='o_row']" position="before">
+            <div class='o_row'>
+                <field name="fname" placeholder="Primer Nombre"  attrs="{'required' : [('company_type', '=', 'person')], 'invisible': [('company_type', '=', 'company')]}"/>
+                <field name="sname" placeholder="Segundo Nombre"  attrs="{'invisible': [('company_type', '=', 'company')]}"/>
+                <field name="flastname"  placeholder="Primer Apellido" attrs="{'required' : [('company_type', '=', 'person')], 'invisible': [('company_type', '=', 'company')]}"/>
+                <field name="slastname" placeholder="Segundo Apellido" attrs="{'invisible': [('company_type', '=', 'company')]}"/>
+           </div>
+        </xpath>
+
+        <field name="name" position="attributes">
+            <attribute name="attrs">{'required': [('company_type', '=', 'company')], 'readonly': [('company_type', '=', 'person')]}</attribute>
+            <attribute name="placeholder">Razón Social</attribute>
+            <attribute name="force_save">True</attribute>
+        </field>
+
+        <xpath expr="//field[@name='vat']" position="attributes">
+             <attribute name="placeholder">EJ: 123456789</attribute>
+        </xpath>
+
+<!--        <xpath expr="//page[@name='internal_notes']" position="after">-->
+<!--             <page name='documents' string="Documentos">-->
+
+<!--            </page>-->
+<!--        </xpath>-->
+
+    </field>
+  </record>
+    <record model="ir.ui.view" id="fields_inherit_res_partner_tree">
+        <field name="name">fields.inherit.res.partner.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+
+        <xpath expr="//field[@name='vat']" position="attributes">
+            <attribute name="optional">show</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='display_name']" position="before">
+            <xpath expr="//field[@name='vat']" position="move"/>
+        </xpath>
+        <xpath expr="//field[@name='display_name']" position="before">
+            <field name="fname"/>
+            <field name="sname"/>
+            <field name="flastname"/>
+            <field name="slastname"/>
+        </xpath>
+
+<!--        Descomentar para subirlo -->
+<!--        <xpath expr="//field[@name='email']" position="after">-->
+<!--            <field name="city_id"/>-->
+<!--        </xpath>-->
+
+        <xpath expr="//field[@name='company_id']" position="attributes">
+            <attribute name="optional">hide</attribute>
+        </xpath>
+
+
+    </field>
+</record>
+</odoo>
