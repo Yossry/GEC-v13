@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+      <record id="operation_field_inherit_analytic_account" model="ir.ui.view">
+        <field name="name">operation.field.inherit.analytic.account</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//field[@name='code']" position="before">
+                <field name="operation_type" widget="radio" required="1" options="{'horizontal': true}" />
+                <field name="credit_type" widget="selection" attrs="{'required' : [('operation_type', '=', 'obli_financiera')], 'invisible': [('operation_type', '=', 'terceros')]}" />
+                <field name="term" placeholder="1 - 130 meses" required="1" attrs="{'required' : [('operation_type', '=', 'obli_financiera')], 'invisible': [('operation_type', '=', 'terceros')]}" />
+            </xpath> 
+            
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="bank_quote" placeholder="EJ: 1000000" required="1" attrs="{'required' : [('operation_type', '=', 'obli_financiera')], 'invisible': [('operation_type', '=', 'terceros')]}" />
+            </xpath>
+            
+            <xpath expr="//field[@name='code']" position="attributes">
+                <attribute name="readonly">True</attribute>
+                <attribute name="force_save">True</attribute>
+            </xpath> 
+            
+        </field>
+      </record>
+
+        
+<!--         <record model="ir.actions.act_window" id="analytic.account_analytic_line_action">
+            
+        </record> -->
+        
+        <record id="view_account_analytic_buttons" model="ir.ui.view">
+            <field name="name">view.account.analytic.buttons</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='button_box']" position="inside">
+                    <button class="oe_stat_button" type="action" name="129" icon="fa-usd" widget="statinfo">
+                        <div class="o_form_field o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="bank_quote" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                            </span>
+                            <span class="o_stat_text">Prueba</span>
+                        </div>
+                    </button>                            
+                </xpath>  
+            </field>
+        </record>
+    </data>
+</odoo>
