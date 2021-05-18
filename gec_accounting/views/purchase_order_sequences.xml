@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-<!--  <record id="seq_puchase_order_wh_knd" model="ir.sequence">-->
-<!--    <field name="name" >Warehouse Order Sequence</field>-->
-<!--      <field name="code" >kennd</field>-->
-<!--      <field name="active" >TRUE</field>-->
-<!--      <field name="prefix" >KND</field>-->
-<!--      <field name="padding" >5</field>-->
-<!--      <field name="number_next" >1</field>-->
-<!--      <field name="number_increment" >1</field>-->
-<!--  </record>-->
-<!--  <record id="seq_puchase_order_wh_chp" model="ir.sequence">-->
-<!--    <field name="name" >Warehouse Order Sequence</field>-->
-<!--      <field name="code" >chapi</field>-->
-<!--      <field name="active" >TRUE</field>-->
-<!--      <field name="prefix" >CHP</field>-->
-<!--      <field name="padding" >5</field>-->
-<!--      <field name="number_next" >1</field>-->
-<!--      <field name="number_increment" >1</field>-->
-<!--  </record>-->
+  <!--      <field name="company_id" eval="False"/>-->
+
   <record id="seq_puchase_order_wh_cal" model="ir.sequence">
     <field name="name" >Warehouse Order Sequence</field>
       <field name="code" >hcall</field>
       <field name="active" >TRUE</field>
       <field name="prefix" >CAL</field>
-      <field name="padding" >5</field>
+      <field name="padding" >0</field>
       <field name="number_next" >1</field>
       <field name="number_increment" >1</field>
   </record>
@@ -31,8 +15,8 @@
     <field name="name" >Warehouse Order Sequence</field>
       <field name="code" >h52</field>
       <field name="active" >TRUE</field>
-      <field name="prefix" >H52</field>
-      <field name="padding" >5</field>
+      <field name="prefix" >H52-</field>
+      <field name="padding" >0</field>
       <field name="number_next" >1</field>
       <field name="number_increment" >1</field>
   </record>
@@ -41,8 +25,8 @@
     <field name="name" >Warehouse Order Sequence</field>
       <field name="code" >h33</field>
       <field name="active" >TRUE</field>
-      <field name="prefix" >H33</field>
-      <field name="padding" >5</field>
+      <field name="prefix" >H33-</field>
+      <field name="padding" >0</field>
       <field name="number_next" >1</field>
       <field name="number_increment" >1</field>
   </record>
@@ -51,8 +35,8 @@
     <field name="name" >Warehouse Order Sequence</field>
       <field name="code" >hd52</field>
       <field name="active" >TRUE</field>
-      <field name="prefix" >HD52</field>
-      <field name="padding" >5</field>
+      <field name="prefix" >HD52-</field>
+      <field name="padding" >0</field>
       <field name="number_next" >1</field>
       <field name="number_increment" >1</field>
   </record>
@@ -62,7 +46,7 @@
       <field name="code" >hdbq</field>
       <field name="active" >TRUE</field>
       <field name="prefix" >HDBQ</field>
-      <field name="padding" >5</field>
+      <field name="padding" >0</field>
       <field name="number_next" >1</field>
       <field name="number_increment" >1</field>
   </record>

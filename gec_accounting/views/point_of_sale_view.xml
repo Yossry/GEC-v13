@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <template id="pos_extend_assets" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+
+                <script type="text/javascript" src="/gec_pos/static/src/js/pos_hide_button.js"/>
+                <link rel="stylesheet" href="/gec_pos/static/src/scss/demo.scss" />
+            </xpath>
+        </template>
+    </data>
+</odoo>

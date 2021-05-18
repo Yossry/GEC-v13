@@ -13,12 +13,7 @@ class PurchaseOrderWarehouse(models.Model):
         bg = self.env['stock.picking.type'].browse(vals.get('picking_type_id'))
         wh = self.env['stock.warehouse'].browse(bg.warehouse_id.id)
         if vals.get('name', 'New') == 'New':
-            # if wh.code == 'KENND':
-            #     vals['name'] = self.env['ir.sequence'].next_by_code(wh.code.lower())
-            # elif wh.code == 'CHAPI':
-            #     vals['name'] = self.env['ir.sequence'].next_by_code(wh.code.lower())
-            # elif wh.code  == 'HCALL':
-            if wh.code  == 'HCALL':
+            if wh.code == 'HCALL':
                 vals['name'] = self.env['ir.sequence'].next_by_code(
                     wh.code.lower())
             elif wh.code == 'H52':

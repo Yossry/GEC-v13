@@ -61,7 +61,8 @@ class AccountMove(models.Model):
             self.journal_id = self.journal_id.search(
                 [('warehouse_id', '=', self.warehouse_id.name)], limit=1)
 
-            return {'domain': {'journal_id': [('warehouse_id', '=', self.warehouse_id.name)]}}
+            return {'domain': {
+                'journal_id': [('warehouse_id', '=', self.warehouse_id.name)]}}
 
         elif self.type == 'out_invoice' or self.type == 'out_refund':  # Factura cliente o Nota credito cliente
 
@@ -69,7 +70,8 @@ class AccountMove(models.Model):
                 [('warehouse_id', '=', self.warehouse_id.name),
                  ('type', '=', 'sale')], limit=1)
 
-            return {'domain': {'journal_id': [('type', '=', 'sale'), ('warehouse_id', "=",self.warehouse_id.name)]}}
+            return {'domain': {'journal_id': [('type', '=', 'sale'), (
+            'warehouse_id', "=", self.warehouse_id.name)]}}
 
         elif self.type == 'in_invoice' or self.type == 'in_refund':  # Factura proveedor proveedor o Nota credito proveedor
 
@@ -77,7 +79,8 @@ class AccountMove(models.Model):
                 [('warehouse_id', '=', self.warehouse_id.name),
                  ('type', '=', 'purchase')], limit=1)
 
-            return {'domain': {'journal_id': [('type', '=', 'purchase'), ('warehouse_id', '=', self.warehouse_id.name)]}}
+            return {'domain': {'journal_id': [('type', '=', 'purchase'), (
+            'warehouse_id', '=', self.warehouse_id.name)]}}
 
         elif self.type == 'out_receipt' or self.type == 'in_receipt':  # Recibo de ventas o recibo de compras
 
@@ -86,29 +89,13 @@ class AccountMove(models.Model):
                  ('type', 'not in', ['sale', 'purchase'])], limit=1)
 
             return {
-                'domain': {'journal_id': [('warehouse_id', '=', self.warehouse_id.name), ('type', 'not like', 'sale'), (
-                    'type', 'not like', 'purchase')]}}
+                'domain': {'journal_id': [
+                    ('warehouse_id', '=', self.warehouse_id.name),
+                    ('type', 'not like', 'sale'), (
+                        'type', 'not like', 'purchase')]}}
             #
             # 'domain': {
             #     'journal_id': [('warehouse_id', '=', self.warehouse_id.name),
             #                    'domain': {'journal_id': [('warehouse_id', '=', self.warehouse_id.name),
             #                                           ('type', 'not in', ['sale','purchase'])]}}]}}
 
-    # @api.depends('type')
-    # def _compute_invoice_filter_type_domain(self):
-    #     for move in self:
-    #         if move.is_sale_document(include_receipts=False):
-    #             move.invoice_filter_type_domain = 'sale'
-    #         elif move.is_purchase_document(include_receipts=False):
-    #             move.invoice_filter_type_domain = 'purchase'
-    #         elif move.is_receipt_document():
-    #             move.invoice_filter_type_domain = ['general','bank','cash']
-    #         else:
-    #             move.invoice_filter_type_domain = False
-    #
-    # @api.model
-    # def get_receipt_types(self):
-    #     return ['out_receipt', 'in_receipt']
-    #
-    # def is_receipt_document(self):
-    #     return self.type in self.get_receipt_types()

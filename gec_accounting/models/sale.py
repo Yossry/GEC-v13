@@ -16,11 +16,6 @@ class SaleOrderWarehouse(models.Model):
     def create(self, vals):
         wh = self.env['stock.warehouse'].browse(vals.get('warehouse_id'))
         if vals.get('name', _('New')) == _('New'):
-            # if wh.code == 'KENND':
-            #     vals['name'] = self.env['ir.sequence'].next_by_code(wh.code.lower())
-            # elif wh.code == 'CHAPI':
-            #     vals['name'] = self.env['ir.sequence'].next_by_code(wh.code.lower())
-            # elif wh.code == 'HCALL':
             if wh.code == 'HCALL':
                 vals['name'] = self.env['ir.sequence'].next_by_code(wh.code.lower())
             elif wh.code == 'H52':

@@ -26,6 +26,15 @@
                    ('type', '!=', 'in_invoice')
                    ]}"
                    string="Register Payment"/>
+           <button name="action_invoice_register_payment" id="account_invoice_payment_btn"
+                   type="object" class="oe_highlight"
+                   attrs="{'invisible': ['|', '|', '|',
+                   ('state', '!=', 'posted'),
+                   ('invoice_payment_state', '!=', 'not_paid'),
+                   ('type', '!=', 'in_invoice'),
+                   ('amount_total', '>', 2000)
+                   ]}"
+                   string="Register Payment"/>
 
 <!--            <attribute name="attrs">{'invisible':-->
 <!--                ['|', '|',-->
