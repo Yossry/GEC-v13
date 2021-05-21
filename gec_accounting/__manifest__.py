@@ -17,15 +17,14 @@
         5. Se agrega el campo almacén asociado a los diarios contables.\n
         6. Se crean los consecutivos para las cotizaciones por cada almacén.\n
         7. Se deshabilita la creación de usuarios en POS.\n
-        
-    
         """,
     'license': 'OEEL-1',
-    'author': 'Grupo Empresarial camacho (Grupo de desarrollo e implementación de ODOO)',
+    'author': 'GE-Camacho',
     'company':'Nodier',
-    'version': '1.0',
+    'version': '2.0',
     "category": "Extra Tools",
-    'depends': ['account','account_accountant','stock','sale','purchase','point_of_sale'],
+    'depends': ['account','account_accountant','stock','sale','purchase',
+                'point_of_sale'],
     'data': [
         'views/account_move_view.xml',
         'views/analytic_account_view.xml',
