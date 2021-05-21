@@ -20,7 +20,6 @@
         """,
     'license': 'OEEL-1',
     'author': 'GE-Camacho',
-    'company':'Nodier',
     'version': '2.0',
     "category": "Extra Tools",
     'depends': ['account','account_accountant','stock','sale','purchase',
