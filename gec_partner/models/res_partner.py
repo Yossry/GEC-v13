@@ -9,6 +9,8 @@ class ResPartner(models.Model):
     name = fields.Char(tracking=True)
     l10n_co_document_type = fields.Selection(tracking=True)
     vat = fields.Char(tracking=True)
+    is_company = fields.Boolean(string='Is a Company', default=False,
+                                help="Check if the contact is a company, otherwise it is a person")
 
     fname = fields.Char(string='Primer Nombre')
     sname = fields.Char(string='Segundo Nombre')

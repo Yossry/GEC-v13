@@ -21,7 +21,7 @@
     
     """,
     'license': 'OEEL-1',
-    'author': 'GECamacho',
+    'author': 'GE-Camacho',
     'version': '1.0',
     "category": "Extra Tools",
     'images': ['static/description/grupo_camacho.jpg'],

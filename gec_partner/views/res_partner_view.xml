@@ -6,6 +6,10 @@
     <field name="inherit_id" ref="base.view_partner_form"/>
     <field name="arch" type="xml">
 
+        <field name="is_company" position="replace">
+            <field name="is_company" eval = 'False' ></field>
+        </field>
+
 <!--       <xpath expr="//div[@class='o_row']" position="before">-->
        <xpath expr="//div[hasclass('o_row')]" position="before">
             <div class='o_row'>
