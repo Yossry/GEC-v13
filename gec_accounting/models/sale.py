@@ -17,18 +17,22 @@ class SaleOrderWarehouse(models.Model):
         wh = self.env['stock.warehouse'].browse(vals.get('warehouse_id'))
         if vals.get('name', _('New')) == _('New'):
             if wh.code == 'HCALL':
-                vals['name'] = self.env['ir.sequence'].next_by_code(wh.code.lower())
+                vals['name'] = self.env['ir.sequence'].next_by_code(
+                    wh.code.lower())
             elif wh.code == 'H52':
-                vals['name'] = self.env['ir.sequence'].next_by_code(wh.code.lower())
+                vals['name'] = self.env['ir.sequence'].next_by_code(
+                    wh.code.lower())
             elif wh.code == 'H33':
-                vals['name'] = self.env['ir.sequence'].next_by_code(wh.code.lower())
+                vals['name'] = self.env['ir.sequence'].next_by_code(
+                    wh.code.lower())
             elif wh.code == 'HD52':
-                vals['name'] = self.env['ir.sequence'].next_by_code(wh.code.lower())
+                vals['name'] = self.env['ir.sequence'].next_by_code(
+                    wh.code.lower())
             elif wh.code == 'HDBQ':
-                vals['name'] = self.env['ir.sequence'].next_by_code(wh.code.lower())
+                vals['name'] = self.env['ir.sequence'].next_by_code(
+                    wh.code.lower())
         res = super(SaleOrderWarehouse, self).create(vals)
         return res
-
 
     @api.model
     def _prepare_invoice(self):
@@ -38,6 +42,7 @@ class SaleOrderWarehouse(models.Model):
 
         return res
 
+    @api.model
     def _create_invoices(self, grouped=False, final=False):
         res = super(SaleOrderWarehouse, self)._create_invoices()
 
@@ -45,9 +50,4 @@ class SaleOrderWarehouse(models.Model):
             [('warehouse_id', '=', self.warehouse_id.name),
              ('type', '=', 'sale')], limit=1)
 
-        print(res)
-
         return res
-
-
-#

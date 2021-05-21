@@ -25,7 +25,8 @@
     'company':'Nodier',
     'version': '1.0',
     "category": "Extra Tools",
-    'depends': ['account','account_accountant','stock','sale','purchase','point_of_sale'],
+    'depends': ['account','account_accountant','stock','sale','purchase',
+                'point_of_sale'],
     'data': [
         'views/account_move_view.xml',
         'views/analytic_account_view.xml',
