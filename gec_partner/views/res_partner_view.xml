@@ -45,7 +45,7 @@
         </field>
 
         <xpath expr="//field[@name='vat']" position="attributes">
-            <attribute name="placeholder">EJ: 123456789</attribute>
+<!--            <attribute name="placeholder">EJ: 123456789</attribute>-->
             <attribute name="attrs">{'readonly': [('account_move_count', '>', 0),
                                                   ('edit_name', '=', False)]}</attribute>
             <attribute name="required">1</attribute>

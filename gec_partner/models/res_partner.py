@@ -83,19 +83,9 @@ class ResPartner(models.Model):
                                   self.vat) if self.vat else self.vat
 
     @api.onchange('l10n_co_document_type')
-    def vat_onchange(self):
+    def doc_type_onchange(self):
         if self.l10n_co_document_type == 'id_document':
             raise UserError(
                 'Por favor use la opción Cédula de ciudadanía para registrar '
                 'un contacto con este tipo de documento.')
-
-
-    # def action_view_account_analytic_line(self):
-    #     """ return the action to see all the analytic lines of the project's analytic account """
-    #     action = self.env.ref('analytic.account_analytic_line_action').read()[0]
-    #     action['context'] = {'default_account_id': self.analytic_account_id.id}
-    #     action['domain'] = [('account_id', '=', self.analytic_account_id.id)]
-    #     return action
-
-
 
