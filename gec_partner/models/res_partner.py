@@ -9,15 +9,15 @@ class ResPartner(models.Model):
     name = fields.Char(tracking=True)
     l10n_co_document_type = fields.Selection(tracking=True)
     vat = fields.Char(tracking=True)
-    is_company = fields.Boolean(string='Is a Company', default=False,
-                                help="Check if the contact is a company, otherwise it is a person")
 
     fname = fields.Char(string='Primer Nombre')
     sname = fields.Char(string='Segundo Nombre')
     flastname = fields.Char(string='Primer Apellido')
     slastname = fields.Char(string='Segundo Apellido')
-    edit_name = fields.Boolean(string='Editar', default=False, tracking=True)
-    account_move_count = fields.Integer(string='Apuntes Contables', compute='_compute_account_move_line_count')
+    edit_name = fields.Boolean(string='Editar', default=False, tracking=True,
+                               help='Seleccionar si se autoriza la modificación del contacto, teniendo en cuenta que ya tiene apuntes contables.')
+    account_move_count = fields.Integer(string='Apuntes Contables',
+                                        compute='_compute_account_move_line_count')
 
     @api.model
     def _compute_account_move_line_count(self):
@@ -48,12 +48,12 @@ class ResPartner(models.Model):
             if self.sname:
                 self.sname = self.sname.upper()
                 self.name = self.fname + ' ' + self.sname + ' ' \
-                    + self.flastname
+                            + self.flastname
 
             if self.slastname:
                 self.slastname = self.slastname.upper()
                 self.name = self.fname + ' ' + self.flastname + ' ' + \
-                    self.slastname
+                            self.slastname
 
             if self.sname and self.slastname:
                 self.name = self.fname + ' ' + self.sname + ' ' + \
@@ -79,13 +79,14 @@ class ResPartner(models.Model):
                 self.vat = re.sub(r'([\W _])', '', self.vat) if self.vat \
                     else self.vat
         if self.company_type == 'company':
-                self.vat = re.sub(r'([a-zA-Z.!"#$%&()+=,;*:/ ])', '',
-                                  self.vat) if self.vat else self.vat
+            self.vat = re.sub(r'([a-zA-Z.!"#$%&()+=,;*:/ ])', '',
+                              self.vat) if self.vat else self.vat
 
     @api.onchange('l10n_co_document_type')
     def doc_type_onchange(self):
-        if self.l10n_co_document_type == 'id_document':
-            raise UserError(
-                'Por favor use la opción Cédula de ciudadanía para registrar '
-                'un contacto con este tipo de documento.')
+        if self.company_type == 'person':
+            if self.l10n_co_document_type == 'id_document' or self.l10n_co_document_type == 'rut':
+                self.l10n_co_document_type = 'national_citizen_id'
 
+        if self.company_type == 'company':
+            self.l10n_co_document_type = 'rut'

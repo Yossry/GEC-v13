@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="associated_field_inherit_crm" model="ir.ui.view">
+    <field name="name">associated.field.inherit.crm</field>
+    <field name="model">crm.lead</field>
+    <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+    <field name="arch" type="xml">
+
+
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/div[1]/field[@name='state_id']" position="attributes">
+            <attribute name="options">{'no_open':True,'no_quick_create':True,'no_create_edit':True,}</attribute>
+            <attribute name="string">Estado</attribute>
+            <attribute name="help">Estado</attribute>
+            <attribute name="placeholder">Estado</attribute>
+        </xpath>
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[3]/field[@name='is_blacklisted']" position="after">
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='partner_name']" position="move"/>
+        </xpath>
+
+        <xpath expr="//form[1]/sheet[1]/group[1]/group[3]/label[1]" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+
+        <xpath expr="//field[@name='partner_id']" position="after">
+            <xpath expr="//field[@name='contact_name']" position="move" />
+            <xpath expr="//field[@name='title']" position="move" />
+
+        </xpath>
+
+        <xpath expr="//field[@name='street2']" position="attributes">
+            <attribute name="help">Barrio</attribute>
+        </xpath>
+        <xpath expr="//field[@name='title']" position="attributes">
+            <attribute name="invisible">1</attribute>
+        </xpath>
+<!--        <xpath expr="/field[@name='function']" position="attributes">-->
+<!--            <attribute name="attrs">{}</attribute>-->
+<!--            <attribute name="invisible">1</attribute>-->
+<!--        </xpath>-->
+
+    </field>
+  </record>
+
+    <record id="hide_create_field_inherit_crm" model="ir.ui.view">
+    <field name="name">hide.create.field.inherit.crm</field>
+    <field name="model">crm.lead2opportunity.partner</field>
+    <field name="inherit_id" ref="crm.view_crm_lead2opportunity_partner"/>
+    <field name="arch" type="xml">
+
+        <xpath expr="//field[@name='action']" position="attributes">
+            <attribute name="domain">[('value', '!=', 'create')]</attribute>
+        </xpath>
+
+    </field>
+  </record>
+
+</odoo>

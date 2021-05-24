@@ -17,8 +17,8 @@
     
     """,
     'license': 'OEEL-1',
-    'author': 'GECamacho',
-    'version': '1.0',
+    'author': 'GE-Camacho',
+    'version': '2.0',
     "category": "Extra Tools",
     'depends': ['base'],
     'data': [
