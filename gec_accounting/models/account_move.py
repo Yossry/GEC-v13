@@ -29,6 +29,7 @@ class AccountMove(models.Model):
     date = fields.Date(tracking=True)
     invoice_date_due = fields.Date(tracking=True)
 
+
     @api.depends('validate_check')
     def _compute_name_validator(self):
         for rec in self:
