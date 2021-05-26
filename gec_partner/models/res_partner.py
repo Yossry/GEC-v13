@@ -87,5 +87,5 @@ class ResPartner(models.Model):
         if self.l10n_co_document_type == 'id_document':
             raise UserError(
                 'Por favor use la opción Cédula de ciudadanía para registrar '
-                'un contacto con este tipo de documento.')
+                'un contacto con este tipo de documentoo.')
 
