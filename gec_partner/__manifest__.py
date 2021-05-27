@@ -22,12 +22,13 @@
     """,
     'license': 'OEEL-1',
     'author': 'GE-Camacho',
-    'version': '1.0',
+    'version': '2.0',
     "category": "Extra Tools",
-    'images': ['static/description/grupo_camacho.jpg'],
-    'depends': ['base','account','hr_expense'],
+    # 'images': ['static/description/grupo_camacho.jpg'],
+    'depends': ['base','account','hr_expense','crm'],
     'data': [
         'views/res_partner_view.xml',
+        'views/crm_leads_views.xml'
         # 'views/hr_expense_view.xml'
 
     ],

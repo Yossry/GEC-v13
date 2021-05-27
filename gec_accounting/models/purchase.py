@@ -1,5 +1,6 @@
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
+import re
 
 
 class PurchaseOrderWarehouse(models.Model):
@@ -7,6 +8,8 @@ class PurchaseOrderWarehouse(models.Model):
 
     name = fields.Char('Order Reference', required=True, index=True,
                        copy=False, default='New')
+
+    partner_ref = fields.Char(size=15)
 
     @api.model
     def create(self, vals):
@@ -31,3 +34,8 @@ class PurchaseOrderWarehouse(models.Model):
         res = super(PurchaseOrderWarehouse, self).create(vals)
         print(res)
         return res
+
+    @api.onchange('partner_ref')
+    def partner_ref_onchange(self):
+        self.partner_ref = re.sub(r'([.!"#$%&()?+=,;*:/ ])','',self.partner_ref.upper()) \
+            if self.partner_ref else self.partner_ref

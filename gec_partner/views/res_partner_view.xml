@@ -10,7 +10,6 @@
             <field name="is_company" eval = 'False' ></field>
         </field>
 
-<!--       <xpath expr="//div[@class='o_row']" position="before">-->
        <xpath expr="//div[hasclass('o_row')]" position="before">
             <div class='o_row'>
                 <field name="fname" placeholder="Primer Nombre"
@@ -44,15 +43,19 @@
             <attribute name="force_save">True</attribute>
         </field>
 
+        <xpath expr="//field[@name='company_type']" position="attributes">
+            <attribute name="options">{"horizontal":true}</attribute>
+        </xpath>
+
         <xpath expr="//field[@name='vat']" position="attributes">
-<!--            <attribute name="placeholder">EJ: 123456789</attribute>-->
+            <attribute name="placeholder">1022XXXXXX</attribute>
             <attribute name="attrs">{'readonly': [('account_move_count', '>', 0),
                                                   ('edit_name', '=', False)]}</attribute>
             <attribute name="required">1</attribute>
         </xpath>
 
-        <xpath expr="//field[@name='vat']" position="after">
-            <field name="edit_name" groups="account.group_account_manager"/>
+        <xpath expr="//div[hasclass('oe_title')]" position="before">
+            <field name="edit_name" widget="boolean_toggle" options="{'terminology': 'Editar contacto'}" groups="account.group_account_manager"/>
         </xpath>
 
         <xpath expr="//field[@name='l10n_co_document_type']" position="attributes">
@@ -60,12 +63,12 @@
                                                   ('edit_name', '=', False)]}</attribute>
         </xpath>
 
-          <xpath expr="//form[1]/sheet[1]/div[@name='button_box']/contactsync[1]" position="after">
+        <xpath expr="//form[1]/sheet[1]/div[@name='button_box']/contactsync[1]" position="after">
             <button class="oe_stat_button" icon="fa-pencil-square-o" type="action"
                     name="gec_partner.action_account_moves_line_res_partner">
               <field widget="statinfo" name="account_move_count" />
             </button>
-          </xpath>
+        </xpath>
 
         <!--        <xpath expr="//page[@name='internal_notes']" position="after">-->
 <!--             <page name='documents' string="Documentos">-->
@@ -75,7 +78,6 @@
 
     </field>
   </record>
-
 
      <record id="action_account_moves_line_res_partner" model="ir.actions.act_window">
          <field name="name">Apuntes Contables</field>
@@ -100,18 +102,10 @@
         <xpath expr="//field[@name='display_name']" position="before">
             <xpath expr="//field[@name='vat']" position="move"/>
         </xpath>
-<!--        <xpath expr="//field[@name='display_name']" position="before">-->
-<!--            <field name="fname"/>-->
-<!--            <field name="sname"/>-->
-<!--            <field name="flastname"/>-->
-<!--            <field name="slastname"/>-->
-<!--        </xpath>-->
-
 
         <xpath expr="//field[@name='company_id']" position="attributes">
             <attribute name="optional">hide</attribute>
         </xpath>
-
 
     </field>
 </record>
