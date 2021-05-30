@@ -1,53 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <!--      <field name="company_id" eval="False"/>-->
 
-  <record id="seq_puchase_order_wh_cal" model="ir.sequence">
-    <field name="name" >Warehouse Order Sequence</field>
-      <field name="code" >hcall</field>
-      <field name="active" >TRUE</field>
-      <field name="prefix" >CAL</field>
-      <field name="padding" >0</field>
-      <field name="number_next" >1</field>
-      <field name="number_increment" >1</field>
-  </record>
-  <record id="seq_puchase_order_wh_h52" model="ir.sequence">
-    <field name="name" >Warehouse Order Sequence</field>
-      <field name="code" >h52</field>
-      <field name="active" >TRUE</field>
-      <field name="prefix" >H52-</field>
-      <field name="padding" >0</field>
-      <field name="number_next" >1</field>
-      <field name="number_increment" >1</field>
-  </record>
+    <record id="seq_puchase_order_wh_cal" model="ir.sequence">
+        <field name="name">Warehouse Order Sequence</field>
+        <field name="code">hcall</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">P</field>
+        <field name="suffix">/CALL</field>
+        <field name="padding">0</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+        <field name="company_id">2</field>
+    </record>
+    <record id="seq_puchase_order_wh_h52" model="ir.sequence">
+        <field name="name">Warehouse Order Sequence</field>
+        <field name="code">h52</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">P</field>
+        <field name="suffix">/H52</field>
+        <field name="padding">0</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+        <field name="company_id">2</field>
+    </record>
 
-  <record id="seq_puchase_order_wh_h33" model="ir.sequence">
-    <field name="name" >Warehouse Order Sequence</field>
-      <field name="code" >h33</field>
-      <field name="active" >TRUE</field>
-      <field name="prefix" >H33-</field>
-      <field name="padding" >0</field>
-      <field name="number_next" >1</field>
-      <field name="number_increment" >1</field>
-  </record>
+    <record id="seq_puchase_order_wh_h33" model="ir.sequence">
+        <field name="name">Warehouse Order Sequence</field>
+        <field name="code">h33</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">P</field>
+        <field name="suffix">/H33</field>
+        <field name="padding">0</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+        <field name="company_id">2</field>
+    </record>
 
-  <record id="seq_puchase_order_wh_hd52" model="ir.sequence">
-    <field name="name" >Warehouse Order Sequence</field>
-      <field name="code" >hd52</field>
-      <field name="active" >TRUE</field>
-      <field name="prefix" >HD52-</field>
-      <field name="padding" >0</field>
-      <field name="number_next" >1</field>
-      <field name="number_increment" >1</field>
-  </record>
+    <record id="seq_puchase_order_wh_hd52" model="ir.sequence">
+        <field name="name">Warehouse Order Sequence</field>
+        <field name="code">hd52</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">P</field>
+        <field name="suffix">/HD52</field>
+        <field name="padding">0</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+        <field name="company_id">2</field>
+    </record>
 
-  <record id="seq_puchase_order_wh_hdbq" model="ir.sequence">
-    <field name="name" >Warehouse Order Sequence</field>
-      <field name="code" >hdbq</field>
-      <field name="active" >TRUE</field>
-      <field name="prefix" >HDBQ</field>
-      <field name="padding" >0</field>
-      <field name="number_next" >1</field>
-      <field name="number_increment" >1</field>
-  </record>
+    <record id="seq_puchase_order_wh_hdbq" model="ir.sequence">
+        <field name="name">Warehouse Order Sequence</field>
+        <field name="code">hdbq</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">P</field>
+        <field name="suffix">/HDBQ</field>
+        <field name="padding">0</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+        <field name="company_id">2</field>
+    </record>
+
+    <record id="seq_puchase_order_wh_hdsa" model="ir.sequence">
+        <field name="name">Warehouse Order Sequence</field>
+        <field name="code">hdsa</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">P</field>
+        <field name="suffix">/HDSA</field>
+        <field name="padding">0</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+        <field name="company_id">2</field>
+    </record>
+
+    <record id="seq_puchase_order_wh_hdsm" model="ir.sequence">
+        <field name="name">Warehouse Order Sequence</field>
+        <field name="code">hdsm</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">P</field>
+        <field name="suffix">/HDSM</field>
+        <field name="padding">0</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+        <field name="company_id">2</field>
+    </record>
+
 </odoo>

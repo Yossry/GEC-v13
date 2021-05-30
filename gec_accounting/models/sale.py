@@ -31,6 +31,12 @@ class SaleOrderWarehouse(models.Model):
             elif wh.code == 'HDBQ':
                 vals['name'] = self.env['ir.sequence'].next_by_code(
                     wh.code.lower())
+            elif wh.code == 'HSA':
+                vals['name'] = self.env['ir.sequence'].next_by_code(
+                    wh.code.lower())
+            elif wh.code == 'HSM':
+                vals['name'] = self.env['ir.sequence'].next_by_code(
+                    wh.code.lower())
         res = super(SaleOrderWarehouse, self).create(vals)
         return res
 

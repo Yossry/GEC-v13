@@ -94,9 +94,3 @@ class AccountMove(models.Model):
                     ('warehouse_id', '=', self.warehouse_id.name),
                     ('type', 'not like', 'sale'), (
                         'type', 'not like', 'purchase')]}}
-            #
-            # 'domain': {
-            #     'journal_id': [('warehouse_id', '=', self.warehouse_id.name),
-            #                    'domain': {'journal_id': [('warehouse_id', '=', self.warehouse_id.name),
-            #                                           ('type', 'not in', ['sale','purchase'])]}}]}}
-

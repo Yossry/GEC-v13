@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="warehouse_field_inherit_account_journal" model="ir.ui.view">
-    <field name="name">warehouse.field.inherit.account.journal</field>
-    <field name="model">account.journal</field>
-    <field name="inherit_id" ref="account.view_account_journal_form"/>
-    <field name="arch" type="xml">
+    <record id="warehouse_field_inherit_account_journal" model="ir.ui.view">
+        <field name="name">warehouse.field.inherit.account.journal</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
 
-        <xpath expr="//field[@name='company_id']" position="after">
-            <field name="warehouse_id" />
-        </xpath>
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="warehouse_id"/>
+            </xpath>
 
-    </field>
-  </record>
+        </field>
+    </record>
 
 </odoo>
