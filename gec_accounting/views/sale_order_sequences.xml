@@ -30,7 +30,7 @@
         <field name="code">h33</field>
         <field name="active">TRUE</field>
         <field name="prefix">S</field>
-        <field name="suffix">H33-</field>
+        <field name="suffix">/H33</field>
         <field name="padding">0</field>
         <field name="number_next">1</field>
         <field name="number_increment">1</field>
