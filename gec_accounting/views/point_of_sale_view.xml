@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <template id="pos_extend_assets" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+
+                <link rel="stylesheet" href="/gec_accounting/static/src/scss/hide_button.scss"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>
