@@ -33,10 +33,6 @@
         <xpath expr="//field[@name='title']" position="attributes">
             <attribute name="invisible">1</attribute>
         </xpath>
-<!--        <xpath expr="/field[@name='function']" position="attributes">-->
-<!--            <attribute name="attrs">{}</attribute>-->
-<!--            <attribute name="invisible">1</attribute>-->
-<!--        </xpath>-->
 
     </field>
   </record>
