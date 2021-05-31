@@ -87,7 +87,6 @@
                 <field name="warehouse_id" js_class=""
                        options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,}"
                        attrs="{'readonly': ['|',('name', '!=', '/'),('invoice_origin', '=', True)]}"
-                       required="1"
                        modifiers="{'readonly': [('invoice_origin', '=', True)}"/>
             </xpath>
 
