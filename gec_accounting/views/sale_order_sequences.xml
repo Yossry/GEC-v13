@@ -90,4 +90,17 @@
         <field name="implementation">no_gap</field>
     </record>
 
+    <record id="seq_sale_order_wh_akt" model="ir.sequence">
+        <field name="name">Warehouse Order Sequence</field>
+        <field name="code">akt</field>
+        <field name="active">TRUE</field>
+        <field name="prefix">S</field>
+        <field name="suffix">/AKT</field>
+        <field name="padding">0</field>
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field>
+        <field name="company_id">2</field>
+        <field name="implementation">no_gap</field>
+    </record>
+
 </odoo>
