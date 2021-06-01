@@ -38,22 +38,6 @@
 
             </xpath>
 
-            <xpath expr="//button[@name='action_post']" position="replace">
-                <button name="action_post" string="Postis" class="oe_highlight" type="object"
-                        groups="account.group_account_invoice"
-                        attrs="{'invisible': ['|','|',('state', '!=', 'draft'),('amount_total', '>', 50000),('type', '!=', 'in_invoice')]}"
-                        modifiers="{'invisible':[['state','!=','draft']]}" options="{}"/>
-
-                <button name="action_post" string="Poster" class="oe_highlight" type="object"
-                        attrs="{'invisible': ['|',('state', '!=', 'draft'),('type', '!=', 'out_invoice')]}"
-                        modifiers="{'invisible':[['state','!=','draft']]}" options="{}"/>
-
-                <button name="action_post" string="Posting" class="oe_highlight" type="object"
-                        groups="account.group_account_user"
-                        attrs="{'invisible': ['|',('state', '!=', 'draft')]}"
-                        modifiers="{'invisible':[['state','!=','draft']]}" options="{}"/>
-            </xpath>
-
             <field name="invoice_outstanding_credits_debits_widget" position="replace">
 
                 <field name="invoice_outstanding_credits_debits_widget"
