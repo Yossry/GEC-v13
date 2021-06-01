@@ -18,28 +18,28 @@ class PurchaseOrderWarehouse(models.Model):
         if vals.get('name', 'New') == 'New':
             if wh.code == 'HCALL':
                 vals['name'] = self.env['ir.sequence'].next_by_code(
-                    wh.code.lower())
+                    wh.code.lower()+'p')
             elif wh.code == 'H52':
                 vals['name'] = self.env['ir.sequence'].next_by_code(
-                    wh.code.lower())
+                    wh.code.lower()+'p')
             elif wh.code == 'H33':
                 vals['name'] = self.env['ir.sequence'].next_by_code(
-                    wh.code.lower())
+                    wh.code.lower()+'p')
             elif wh.code == 'HD52':
                 vals['name'] = self.env['ir.sequence'].next_by_code(
-                    wh.code.lower())
+                    wh.code.lower()+'p')
             elif wh.code == 'HDBQ':
                 vals['name'] = self.env['ir.sequence'].next_by_code(
-                    wh.code.lower())
+                    wh.code.lower()+'p')
             elif wh.code == 'HSA':
                 vals['name'] = self.env['ir.sequence'].next_by_code(
-                    wh.code.lower())
+                    wh.code.lower()+'p')
             elif wh.code == 'HSM':
                 vals['name'] = self.env['ir.sequence'].next_by_code(
-                    wh.code.lower())
+                    wh.code.lower()+'p')
             elif wh.code == 'AKT':
                 vals['name'] = self.env['ir.sequence'].next_by_code(
-                    wh.code.lower())
+                    wh.code.lower()+'p')
         res = super(PurchaseOrderWarehouse, self).create(vals)
         print(res)
         return res

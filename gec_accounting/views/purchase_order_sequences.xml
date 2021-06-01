@@ -2,7 +2,7 @@
 <odoo>
     <record id="seq_puchase_order_wh_cal" model="ir.sequence">
         <field name="name">Warehouse Order Sequence</field>
-        <field name="code">hcall</field>
+        <field name="code">hcallp</field>
         <field name="active">TRUE</field>
         <field name="prefix">P</field>
         <field name="suffix">/CALL</field>
@@ -14,7 +14,7 @@
     </record>
     <record id="seq_puchase_order_wh_h52" model="ir.sequence">
         <field name="name">Warehouse Order Sequence</field>
-        <field name="code">h52</field>
+        <field name="code">h52p</field>
         <field name="active">TRUE</field>
         <field name="prefix">P</field>
         <field name="suffix">/H52</field>
@@ -27,7 +27,7 @@
 
     <record id="seq_puchase_order_wh_h33" model="ir.sequence">
         <field name="name">Warehouse Order Sequence</field>
-        <field name="code">h33</field>
+        <field name="code">h33p</field>
         <field name="active">TRUE</field>
         <field name="prefix">P</field>
         <field name="suffix">/H33</field>
@@ -40,7 +40,7 @@
 
     <record id="seq_puchase_order_wh_hd52" model="ir.sequence">
         <field name="name">Warehouse Order Sequence</field>
-        <field name="code">hd52</field>
+        <field name="code">hd52p</field>
         <field name="active">TRUE</field>
         <field name="prefix">P</field>
         <field name="suffix">/HD52</field>
@@ -53,7 +53,7 @@
 
     <record id="seq_puchase_order_wh_hdbq" model="ir.sequence">
         <field name="name">Warehouse Order Sequence</field>
-        <field name="code">hdbq</field>
+        <field name="code">hdbqp</field>
         <field name="active">TRUE</field>
         <field name="prefix">P</field>
         <field name="suffix">/HDBQ</field>
@@ -66,7 +66,7 @@
 
     <record id="seq_puchase_order_wh_hdsa" model="ir.sequence">
         <field name="name">Warehouse Order Sequence</field>
-        <field name="code">hsa</field>
+        <field name="code">hsap</field>
         <field name="active">TRUE</field>
         <field name="prefix">P</field>
         <field name="suffix">/HSA</field>
@@ -79,7 +79,7 @@
 
     <record id="seq_puchase_order_wh_hdsm" model="ir.sequence">
         <field name="name">Warehouse Order Sequence</field>
-        <field name="code">hsm</field>
+        <field name="code">hsmp</field>
         <field name="active">TRUE</field>
         <field name="prefix">P</field>
         <field name="suffix">/HSM</field>
@@ -92,7 +92,7 @@
 
     <record id="seq_puchase_order_wh_akt" model="ir.sequence">
         <field name="name">Warehouse Order Sequence</field>
-        <field name="code">akt</field>
+        <field name="code">aktp</field>
         <field name="active">TRUE</field>
         <field name="prefix">P</field>
         <field name="suffix">/AKT</field>
