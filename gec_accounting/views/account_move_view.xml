@@ -23,7 +23,7 @@
                         ('state', '!=', 'posted'),
                         ('invoice_payment_state', '!=', 'not_paid'),
                         ('type', '!=', 'in_invoice'), '&amp;',
-                        ('validate_check', '!=', True),
+                        ('validate_treasurer', '!=', True),
                         ('amount_total', '>', 50000)]}"
                         string="Register Payment"/>
 
