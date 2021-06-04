@@ -5,8 +5,6 @@ from odoo.exceptions import UserError, ValidationError
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    sequence = fields.Char(string='Consecutivo Almacén')
-
     warehouse_id = fields.Many2one('stock.warehouse', 'Almacén',
                                    ondelete='set null', index=True,
                                    tracking=True, store=True)
@@ -17,27 +15,38 @@ class AccountMove(models.Model):
                                  domain="[('company_id', '=', company_id)]",
                                  default='')
 
-    validate_check = fields.Boolean()
-
-    validate_uid = fields.Char(compute='_compute_name_validator',
+    validate_treasurer = fields.Boolean(string="Validar")
+    validate_treasurer_name = fields.Char(compute='_compute_treasurer_validator',
                                default='Por Validar', readonly=True,
                                store=True,
-                               string='Validadación de pago',
+                               string='Validadación tesorería',
                                tracking=True)
 
+    validate_accounting = fields.Boolean(string ="Validar")
+    validate_accounting_name = fields.Char(compute='_compute_accounting_validator',
+                                default='Por Validar', readonly=True,
+                                store=True,
+                                string='Validación contabilidad',
+                                tracking=True)
+
+    invoice_outstanding_credits_debits_widget = fields.Text(tracking=True)
     invoice_date = fields.Date(tracking=True)
     date = fields.Date(tracking=True)
     invoice_date_due = fields.Date(tracking=True)
 
-
-    @api.depends('validate_check')
-    def _compute_name_validator(self):
+    @api.depends('validate_treasurer')
+    def _compute_treasurer_validator(self):
         for rec in self:
             rec.ensure_one()
-            if rec.validate_check:
-                rec.validate_uid = 'Aprobado'
-            else:
-                rec.validate_uid = 'Sin aprobar'
+            if rec.validate_treasurer:
+                rec.validate_treasurer_name = self.env.user.name
+
+    @api.depends('validate_accounting')
+    def _compute_accounting_validator(self):
+        for rec in self:
+            rec.ensure_one()
+            if rec.validate_accounting:
+                rec.validate_accounting_name = self.env.user.name
 
     def write(self, vals):
         res = super(AccountMove, self).write(vals)
@@ -72,7 +81,7 @@ class AccountMove(models.Model):
                  ('type', '=', 'sale')], limit=1)
 
             return {'domain': {'journal_id': [('type', '=', 'sale'), (
-            'warehouse_id', "=", self.warehouse_id.name)]}}
+                'warehouse_id', "=", self.warehouse_id.name)]}}
 
         elif self.type == 'in_invoice' or self.type == 'in_refund':  # Factura proveedor proveedor o Nota credito proveedor
 
@@ -81,7 +90,7 @@ class AccountMove(models.Model):
                  ('type', '=', 'purchase')], limit=1)
 
             return {'domain': {'journal_id': [('type', '=', 'purchase'), (
-            'warehouse_id', '=', self.warehouse_id.name)]}}
+                'warehouse_id', '=', self.warehouse_id.name)]}}
 
         elif self.type == 'out_receipt' or self.type == 'in_receipt':  # Recibo de ventas o recibo de compras
 

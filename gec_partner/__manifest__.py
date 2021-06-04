@@ -25,11 +25,9 @@
     'version': '2.0',
     "category": "Extra Tools",
     # 'images': ['static/description/grupo_camacho.jpg'],
-    'depends': ['base','account','hr_expense','crm'],
+    'depends': ['base','account'],
     'data': [
         'views/res_partner_view.xml',
-        'views/crm_leads_views.xml'
-        # 'views/hr_expense_view.xml'
 
     ],
     'installable': True,    
