@@ -22,7 +22,7 @@
                         attrs="{'invisible': ['|', '|', '|',
                         ('state', '!=', 'posted'),
                         ('invoice_payment_state', '!=', 'not_paid'),
-                        ('type', '!=', 'in_invoice'), '&amp;'
+                        ('type', '!=', 'in_invoice'), '&amp;',
                         ('validate_check', '!=', True),
                         ('amount_total', '>', 50000)]}"
                         string="Register Payment"/>
