@@ -37,7 +37,7 @@ class AccountMove(models.Model):
             if rec.validate_check:
                 rec.validate_uid = 'Aprobado'
             else:
-                rec.validate_uid = 'Sin aprobar'
+                rec.validate_uid = 'Por aprobar'
 
     def write(self, vals):
         res = super(AccountMove, self).write(vals)
