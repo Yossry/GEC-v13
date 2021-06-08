@@ -76,13 +76,13 @@
 
             <xpath expr="//field[@name='purchase_vendor_bill_id']" position="after">
 
-                <field name="validate_accounting" invisible="1" attrs="{'invisible': ['|',('state', '!=', 'draft'),
+                <field name="validate_accounting" attrs="{'invisible': ['|',('state', '!=', 'draft'),
             ('type','!=','in_invoice')]}" groups="account.group_account_user"/>
 
                 <field name="validate_accounting_name" attrs="{'invisible': ['|',
             ('validate_accounting','!=',True),('type','!=','in_invoice')]}"/>
 
-                <field name="validate_treasurer" invisible="1" attrs="{'invisible': ['|',('state', '!=', 'posted'),
+                <field name="validate_treasurer" attrs="{'invisible': ['|',('state', '!=', 'posted'),
             ('type','!=','in_invoice')]}" groups="account.group_account_manager"/>
 
                 <field name="validate_treasurer_name" attrs="{'invisible': ['|','|',('state', '!=', 'posted'),
@@ -100,23 +100,25 @@
 
             <xpath expr="//field[@name='state']" position="after">
 
-                <field name="validate_treasurer"
+<!--                <field name="validate_accounting"-->
+<!--                       invisible="context.get('default_type') != 'in_invoice'"-->
+<!--                       attrs="{'invisible': [('state', '!=', 'posted')]}"-->
+<!--                       widget="boolean_toggle" groups="account.group_account_manager"/>-->
+
+                <field name="validate_accounting_name"
                        invisible="context.get('default_type') != 'in_invoice'"
-                       attrs="{'invisible': [('state', '!=', 'posted')]}"
-                       widget="boolean_toggle" groups="account.group_account_manager"/>
+                       attrs="{'invisible': ['|',('state', '!=', 'posted'),('type','!=','in_invoice')]}"/>
+
+<!--                <field name="validate_treasurer"-->
+<!--                       invisible="context.get('default_type') != 'in_invoice'"-->
+<!--                       attrs="{'invisible': [('state', '!=', 'posted')]}"-->
+<!--                       widget="boolean_toggle" groups="account.group_account_manager"/>-->
 
                 <field name="validate_treasurer_name"
                        invisible="context.get('default_type') != 'in_invoice'"
                        attrs="{'invisible': ['|',('state', '!=', 'posted'),('type','!=','in_invoice')]}"/>
 
-                <field name="validate_accounting"
-                       invisible="context.get('default_type') != 'in_invoice'"
-                       attrs="{'invisible': [('state', '!=', 'posted')]}"
-                       widget="boolean_toggle" groups="account.group_account_manager"/>
 
-                <field name="validate_accounting_name"
-                       invisible="context.get('default_type') != 'in_invoice'"
-                       attrs="{'invisible': ['|',('state', '!=', 'posted'),('type','!=','in_invoice')]}"/>
 
             </xpath>
 
