@@ -22,7 +22,7 @@ class AccountMove(models.Model):
     validate_uid = fields.Char(compute='_compute_name_validator',
                                default='Por Validar', readonly=True,
                                store=True,
-                               string='Validadación de pago',
+                               string='Validadación de pago:',
                                tracking=True)
 
     invoice_date = fields.Date(tracking=True)
