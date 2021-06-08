@@ -20,6 +20,7 @@ class AccountMove(models.Model):
                                default='Por Validar', readonly=True,
                                store=True,
                                string='Validadación tesorería',
+
                                tracking=True)
 
     validate_accounting = fields.Boolean(string ="Validar")
