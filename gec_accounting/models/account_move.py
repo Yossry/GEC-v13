@@ -46,8 +46,12 @@ class AccountMove(models.Model):
     def _compute_accounting_validator(self):
         for rec in self:
             rec.ensure_one()
-            if rec.validate_accounting:
-                rec.validate_accounting_name = self.env.user.name
+
+            if rec.validate_check:
+                rec.validate_uid = 'Aprobado'
+            else:
+                rec.validate_uid = 'Por aprobar'
+
 
     def write(self, vals):
         res = super(AccountMove, self).write(vals)
