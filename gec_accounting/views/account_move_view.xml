@@ -74,7 +74,7 @@
 
             </xpath>
 
-            <xpath expr="//field[@name='purchase_vendor_bill_id']" position="after">
+            <xpath expr="//field[@name='ref']" position="after">
 
                 <field name="validate_accounting" attrs="{'invisible': ['|',('state', '!=', 'draft'),
             ('type','!=','in_invoice')]}" groups="account.group_account_user"/>
