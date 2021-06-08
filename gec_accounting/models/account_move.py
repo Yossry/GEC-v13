@@ -48,6 +48,7 @@ class AccountMove(models.Model):
             if rec.validate_accounting:
                 rec.validate_accounting_name = self.env.user.name
 
+
     def write(self, vals):
         res = super(AccountMove, self).write(vals)
 
