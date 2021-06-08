@@ -19,14 +19,14 @@ class AccountMove(models.Model):
     validate_treasurer_name = fields.Char(compute='_compute_treasurer_validator',
                                default='Por Validar', readonly=True,
                                store=True,
-                               string='Validadación tesorería',
+                               string='Validado por tesorería',
                                tracking=True)
 
     validate_accounting = fields.Boolean(string ="Validar")
     validate_accounting_name = fields.Char(compute='_compute_accounting_validator',
                                 default='Por Validar', readonly=True,
                                 store=True,
-                                string='Validación contabilidad',
+                                string='Validado por contabilidad',
                                 tracking=True)
 
     invoice_outstanding_credits_debits_widget = fields.Text(tracking=True)
