@@ -7,7 +7,7 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     name = fields.Char(tracking=True)
-    l10n_co_document_type = fields.Selection(tracking=True)
+    l10n_co_document_type = fields.Selection(tracking=True, string='Tipo de documento')
 
     vat = fields.Char(tracking=True)
 
