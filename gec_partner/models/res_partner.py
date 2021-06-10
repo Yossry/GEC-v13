@@ -7,7 +7,18 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     name = fields.Char(tracking=True)
-    l10n_co_document_type = fields.Selection(tracking=True)
+    # l10n_co_document_type = fields.Selection(tracking=True)
+    # l10n_co_document_type = fields.Selection([('rut', 'NIT'),
+    #                                           ('id_card',
+    #                                            'Tarjeta de Identidad'),
+    #                                           ('passport', 'Pasaporte'),
+    #                                           ('foreign_id_card',
+    #                                            'Cédula Extranjera'),
+    #                                           ('national_citizen_id',
+    #                                            'Cédula de ciudadanía')],
+    #                                          string='Document Type',
+    #                                          help='Doc test',
+    #                                          tracking=True)
     vat = fields.Char(tracking=True)
 
     fname = fields.Char(string='Primer Nombre')
@@ -66,7 +77,7 @@ class ResPartner(models.Model):
             if self.name:
                 self.name = self.name.upper()
             self.fname = self.sname = self.flastname = self.slastname = ''
-        if self.company_type == 'person':
+        # if self.company_type == 'person':
             self.l10n_co_document_type = 'national_citizen_id'
 
     @api.onchange('vat')
@@ -90,3 +101,13 @@ class ResPartner(models.Model):
 
         if self.company_type == 'company':
             self.l10n_co_document_type = 'rut'
+
+class ResPartnerBank(models.Model):
+    _inherit = 'res.partner.bank'
+
+    # @api.model
+    # def _get_supported_account_types(self):
+    #     return [('bank', _('Normal'))]
+
+    acc_type = fields.Selection(selection=lambda x: x.env['res.partner.bank'].get_supported_account_types(), compute='_compute_acc_type', string='Type', help='Bank account type: Normal or IBAN. Inferred from the bank account number.')
+
