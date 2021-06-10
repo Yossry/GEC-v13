@@ -1,92 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="fname_lname_field_inherit_res_partner" model="ir.ui.view">
-    <field name="name">fname.lname.field.inherit.res.partner</field>
-    <field name="model">res.partner</field>
-    <field name="inherit_id" ref="base.view_partner_form"/>
-    <field name="arch" type="xml">
+    <record id="fname_lname_field_inherit_res_partner" model="ir.ui.view">
+        <field name="name">fname.lname.field.inherit.res.partner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
 
-        <field name="is_company" position="replace">
-            <field name="is_company" eval = 'False' ></field>
-        </field>
+            <field name="is_company" position="replace">
+                <field name="is_company" eval='False'></field>
+            </field>
 
-       <xpath expr="//div[hasclass('o_row')]" position="before">
-            <div class='o_row'>
-                <field name="fname" placeholder="Primer Nombre"
-                       attrs="{'required' : [('company_type', '=', 'person')],
+            <xpath expr="//div[hasclass('o_row')]" position="before">
+                <div class='o_row'>
+                    <field name="fname" placeholder="Primer Nombre"
+                           attrs="{'required' : [('company_type', '=', 'person')],
                        'invisible': [('company_type', '=', 'company')],
                         'readonly': [('account_move_count', '>', 0),
                                     ('edit_name', '=', False)]}"/>
-                <field name="sname" placeholder="Segundo Nombre"
-                       attrs="{'invisible': [('company_type', '=', 'company')],
+                    <field name="sname" placeholder="Segundo Nombre"
+                           attrs="{'invisible': [('company_type', '=', 'company')],
                                 'readonly': [('account_move_count', '>', 0),
                                              ('edit_name', '=', False)]}"/>
-                <field name="flastname"
-                       placeholder="Primer Apellido"
-                       attrs="{'required' : [('company_type', '=', 'person')],
+                    <field name="flastname"
+                           placeholder="Primer Apellido"
+                           attrs="{'required' : [('company_type', '=', 'person')],
                        'invisible': [('company_type', '=', 'company')],
                        'readonly': [('account_move_count', '>', 0),
                                     ('edit_name', '=', False)]}"/>
-                <field name="slastname" placeholder="Segundo Apellido"
-                       attrs="{'invisible': [('company_type', '=', 'company')],
+                    <field name="slastname" placeholder="Segundo Apellido"
+                           attrs="{'invisible': [('company_type', '=', 'company')],
                                 'readonly': [('account_move_count', '>', 0),
                                              ('edit_name', '=', False)]}"/>
-           </div>
-        </xpath>
+                </div>
+            </xpath>
 
-        <field name="name" position="attributes">
-            <attribute name="attrs">{'required': [('company_type', '=', 'company')],
-                                     'readonly': ['|',('company_type', '=', 'person'),
-                                                  ('account_move_count', '>', 0),
-                                                  ('edit_name', '=', False)]}</attribute>
-            <attribute name="placeholder">Razón Social</attribute>
-            <attribute name="force_save">True</attribute>
+            <field name="name" position="attributes">
+                <attribute name="attrs">{'required': [('company_type', '=', 'company')],
+                                         'readonly': ['|', ('company_type', '=', 'person'),
+                                                      ('account_move_count', '>', 0),
+                                                      ('edit_name', '=', False)]}</attribute>
+                <attribute name="placeholder">Razón Social</attribute>
+                <attribute name="force_save">True</attribute>
+            </field>
+
+            <xpath expr="//field[@name='company_type']" position="attributes">
+                <attribute name="options">{"horizontal": true}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="placeholder">1022XXXXXX</attribute>
+                <attribute name="attrs">{'readonly': [('account_move_count', '>', 0),
+                                                      ('edit_name', '=', False)]}</attribute>
+                <attribute name="required">1</attribute>
+            </xpath>
+
+            <xpath expr="//div[hasclass('oe_title')]" position="before">
+                <field name="edit_name" widget="boolean_toggle"
+                       options="{'terminology': 'Editar contacto'}"
+                       groups="account.group_account_manager"/>
+            </xpath>
+
+<!--            <xpath expr="//field[@name='l10n_co_document_type']" position="attributes">-->
+<!--                <attribute name="attrs">{'readonly': [('account_move_count', '>', 0),-->
+<!--                                                      ('edit_name', '=', False)]}</attribute>-->
+<!--            </xpath>-->
+
+            <xpath expr="//form[1]/sheet[1]/div[@name='button_box']/contactsync[1]"
+                   position="after">
+                <button class="oe_stat_button" icon="fa-pencil-square-o" type="action"
+                        name="gec_partner.action_account_moves_line_res_partner">
+                    <field widget="statinfo" name="account_move_count"/>
+                </button>
+            </xpath>
+
+            <!--        <xpath expr="//page[@name='internal_notes']" position="after">-->
+            <!--             <page name='documents' string="Documentos">-->
+
+            <!--            </page>-->
+            <!--        </xpath>-->
+
         </field>
+    </record>
 
-        <xpath expr="//field[@name='company_type']" position="attributes">
-            <attribute name="options">{"horizontal":true}</attribute>
-        </xpath>
-
-        <xpath expr="//field[@name='vat']" position="attributes">
-            <attribute name="placeholder">1022XXXXXX</attribute>
-            <attribute name="attrs">{'readonly': [('account_move_count', '>', 0),
-                                                  ('edit_name', '=', False)]}</attribute>
-            <attribute name="required">1</attribute>
-        </xpath>
-
-        <xpath expr="//div[hasclass('oe_title')]" position="before">
-            <field name="edit_name" widget="boolean_toggle" options="{'terminology': 'Editar contacto'}" groups="account.group_account_manager"/>
-        </xpath>
-
-        <xpath expr="//field[@name='l10n_co_document_type']" position="attributes">
-            <attribute name="attrs">{'readonly': [('account_move_count', '>', 0),
-                                                  ('edit_name', '=', False)]}</attribute>
-        </xpath>
-
-        <xpath expr="//form[1]/sheet[1]/div[@name='button_box']/contactsync[1]" position="after">
-            <button class="oe_stat_button" icon="fa-pencil-square-o" type="action"
-                    name="gec_partner.action_account_moves_line_res_partner">
-              <field widget="statinfo" name="account_move_count" />
-            </button>
-        </xpath>
-
-        <!--        <xpath expr="//page[@name='internal_notes']" position="after">-->
-<!--             <page name='documents' string="Documentos">-->
-
-<!--            </page>-->
-<!--        </xpath>-->
-
-    </field>
-  </record>
-
-     <record id="action_account_moves_line_res_partner" model="ir.actions.act_window">
-         <field name="name">Apuntes Contables</field>
-         <field name="res_model">account.move.line</field>
-         <field name="view_mode">tree,form</field>
-         <field name="domain">[('partner_id', '=', active_id)]</field>
-         <field name="context">{'search_default_partner_id': active_id,'default_partner_id': active_id}</field>
-     </record>
-
+    <record id="action_account_moves_line_res_partner" model="ir.actions.act_window">
+        <field name="name">Apuntes Contables</field>
+        <field name="res_model">account.move.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('partner_id', '=', active_id)]</field>
+        <field name="context">{'search_default_partner_id': active_id,
+                               'default_partner_id': active_id}</field>
+    </record>
 
 
     <record model="ir.ui.view" id="fields_inherit_res_partner_tree">
@@ -95,18 +98,32 @@
         <field name="inherit_id" ref="base.view_partner_tree"/>
         <field name="arch" type="xml">
 
-        <xpath expr="//field[@name='vat']" position="attributes">
-            <attribute name="optional">show</attribute>
-        </xpath>
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
 
-        <xpath expr="//field[@name='display_name']" position="before">
-            <xpath expr="//field[@name='vat']" position="move"/>
-        </xpath>
+            <xpath expr="//field[@name='display_name']" position="before">
+                <xpath expr="//field[@name='vat']" position="move"/>
+            </xpath>
 
-        <xpath expr="//field[@name='company_id']" position="attributes">
-            <attribute name="optional">hide</attribute>
-        </xpath>
+            <xpath expr="//field[@name='company_id']" position="attributes">
+                <attribute name="optional">hide</attribute>
+            </xpath>
 
-    </field>
-</record>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="acc_type_inherit_res_partner_bank">
+        <field name="name">acc.type.inherit.res.partner.bank</field>
+        <field name="model">res.partner.bank</field>
+        <field name="inherit_id" ref="base.view_partner_bank_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='acc_type']" position="replace">
+                <field name="acc_type" modifiers="{'readonly':false}"/>
+            </xpath>
+
+        </field>
+    </record>
 </odoo>
