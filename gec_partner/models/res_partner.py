@@ -7,18 +7,8 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     name = fields.Char(tracking=True)
-    # l10n_co_document_type = fields.Selection(tracking=True)
-    # l10n_co_document_type = fields.Selection([('rut', 'NIT'),
-    #                                           ('id_card',
-    #                                            'Tarjeta de Identidad'),
-    #                                           ('passport', 'Pasaporte'),
-    #                                           ('foreign_id_card',
-    #                                            'Cédula Extranjera'),
-    #                                           ('national_citizen_id',
-    #                                            'Cédula de ciudadanía')],
-    #                                          string='Document Type',
-    #                                          help='Doc test',
-    #                                          tracking=True)
+    l10n_co_document_type = fields.Selection(tracking=True)
+
     vat = fields.Char(tracking=True)
 
     fname = fields.Char(string='Primer Nombre')

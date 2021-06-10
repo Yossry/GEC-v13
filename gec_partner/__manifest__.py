@@ -25,7 +25,7 @@
     'version': '2.0',
     "category": "Extra Tools",
     # 'images': ['static/description/grupo_camacho.jpg'],
-    'depends': ['base','account'],
+    'depends': ['base','account','l10n_co'],
     'data': [
         'views/res_partner_view.xml',
 
