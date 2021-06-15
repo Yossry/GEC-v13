@@ -28,8 +28,8 @@
         'views/account_move_view.xml',
         'views/analytic_account_view.xml',
         'views/account_journal_view.xml',
-        'views/sale_order_sequences.xml',
-        'views/purchase_order_sequences.xml',
+        'data/sale_order_sequences.xml',
+        'data/purchase_order_sequences.xml',
         'views/point_of_sale_view.xml',
 
 
