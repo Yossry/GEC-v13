@@ -6,54 +6,47 @@
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="arch" type="xml">
 
-            <xpath expr="//button[@name='action_invoice_register_payment']" position="replace">
+<!--            <xpath expr="//button[@name='action_invoice_register_payment']" position="replace">-->
 
-                <button name="action_invoice_register_payment" id="account_invoice_payment_btn"
-                        type="object" class="oe_highlight"
-                        attrs="{'invisible': ['|', '|',
-                   ('state', '!=', 'posted'),
-                   ('invoice_payment_state', '!=', 'not_paid'),
-                   ('type', 'not in', ('out_invoice', 'out_refund','in_refund', 'out_receipt', 'in_receipt'))
-                   ]}"
-                        string="Registrar Pago"/>
+<!--                <button name="action_invoice_register_payment" id="account_invoice_payment_btn"-->
+<!--                        type="object" class="oe_highlight"-->
+<!--                        attrs="{'invisible': ['|', '|',-->
+<!--                   ('state', '!=', 'posted'),-->
+<!--                   ('invoice_payment_state', '!=', 'not_paid'),-->
+<!--                   ('type', 'not in', ('out_invoice', 'out_refund','in_refund', 'out_receipt', 'in_receipt'))-->
+<!--                   ]}"-->
+<!--                        string="Registrar Pago"/>-->
 
-                <button name="action_invoice_register_payment" id="account_invoice_payment_btn"
-                        type="object" class="oe_highlight"
-                        attrs="{'invisible': ['|', '|', '|',
-                        ('state', '!=', 'posted'),
-                        ('invoice_payment_state', '!=', 'not_paid'),
-                        ('type', '!=', 'in_invoice'), '&amp;',
-                        ('validate_treasurer', '!=', True),
-                        ('amount_total', '>', 50000)]}"
-                        string="registrar Pago"/>
+<!--                <button name="action_invoice_register_payment" id="account_invoice_payment_btn"-->
+<!--                        type="object" class="oe_highlight"-->
+<!--                        attrs="{'invisible': ['|', '|', '|',-->
+<!--                        ('state', '!=', 'posted'),-->
+<!--                        ('invoice_payment_state', '!=', 'not_paid'),-->
+<!--                        ('type', '!=', 'in_invoice'), '&amp;',-->
+<!--                        ('validate_treasurer', '!=', True),-->
+<!--                        ('amount_total', '>', 50000)]}"-->
+<!--                        string="registrar Pago"/>-->
+<!--         -->
+<!--            </xpath>-->
 
-                <!--                <button name="action_invoice_register_payment" id="account_invoice_payment_btn"-->
-                <!--                        type="object" class="oe_highlight"-->
-                <!--                        attrs="{'invisible': ['|', '|', '|',-->
-                <!--                        ('state', '!=', 'posted'),-->
-                <!--                        ('invoice_payment_state', '!=', 'not_paid'),-->
-                <!--                        ('type', '!=', 'in_invoice'),-->
-                <!--                        ('amount_total', '>', 50000)]}"-->
-                <!--                        string="Register Payment"/>-->
-            </xpath>
+<!--            <xpath expr="//field[@name='invoice_outstanding_credits_debits_widget']"-->
+<!--                   position="replace">-->
 
-            <xpath expr="//field[@name='invoice_outstanding_credits_debits_widget']"
-                   position="replace">
+<!--                <field name="invoice_outstanding_credits_debits_widget"-->
+<!--                       class="oe_invoice_outstanding_credits_debits"-->
+<!--                       colspan="2" nolabel="1" widget="payment"-->
+<!--                       attrs="{'invisible': ['|', ('state', '!=', 'posted'), ('type', 'in', ('out_receipt', 'in_receipt', 'in_invoice'))]}"-->
+<!--                       modifiers="{'invisible':['|', ['state','!=','posted'], ['type','in',['out_receipt','in_receipt']]],'readonly':true}"/>-->
 
-                <field name="invoice_outstanding_credits_debits_widget"
-                       class="oe_invoice_outstanding_credits_debits"
-                       colspan="2" nolabel="1" widget="payment"
-                       attrs="{'invisible': ['|', ('state', '!=', 'posted'), ('type', 'in', ('out_receipt', 'in_receipt', 'in_invoice'))]}"
-                       modifiers="{'invisible':['|', ['state','!=','posted'], ['type','in',['out_receipt','in_receipt']]],'readonly':true}"/>
-
-                <field name="invoice_outstanding_credits_debits_widget"
-                       class="oe_invoice_outstanding_credits_debits"
-                       colspan="2" nolabel="1" widget="payment"
-                       attrs="{'invisible': ['|', '|', ('state', '!=', 'posted'), ('type', 'in', ('out_receipt', 'in_receipt', 'out_invoice')), '&amp;',('validate_treasurer','!=',True),('amount_total','>',50000)]}"
-                       modifiers="{'invisible':['|', ['state','!=','posted'], ['type','in',['out_receipt','in_receipt']], ['validate_check', '!=', True]],'readonly':true}"/>
+<!--                <field name="invoice_outstanding_credits_debits_widget"-->
+<!--                       class="oe_invoice_outstanding_credits_debits"-->
+<!--                       colspan="2" nolabel="1" widget="payment"-->
+<!--                       attrs="{'invisible': ['|', '|', ('state', '!=', 'posted'), ('type', 'in', ('out_receipt', 'in_receipt', 'out_invoice')), '&amp;',('validate_treasurer','!=',True),('amount_total','>',50000)]}"-->
+<!--                       modifiers="{'invisible':['|', ['state','!=','posted'], ['type','in',['out_receipt','in_receipt']], ['validate_check', '!=', True]],'readonly':true}"/>-->
 
 
-            </xpath>
+<!--            </xpath>-->
+
             <xpath expr="//button[@name='action_post']" position="replace">
                 <!--                 Original -->
                 <!--                 <button name="action_post" string="Publicar" class="oe_highlight" type="object"
@@ -82,11 +75,11 @@
                 <field name="validate_accounting_name" attrs="{'invisible': ['|',
             ('validate_accounting','!=',True),('type','!=','in_invoice')]}"/>
 
-                <field name="validate_treasurer" attrs="{'invisible': ['|','|',('state', '!=', 'posted'),
-            ('type','!=','in_invoice'),('amount_total','&lt;=',50000)]}" groups="account.group_account_manager"/>
+<!--                <field name="validate_treasurer" attrs="{'invisible': ['|','|',('state', '!=', 'posted'),-->
+<!--            ('type','!=','in_invoice'),('amount_total','&lt;=',50000)]}" groups="account.group_account_manager"/>-->
 
-                <field name="validate_treasurer_name" attrs="{'invisible': ['|','|',('state', '!=', 'posted'),
-            ('validate_treasurer','!=',True),('type','!=','in_invoice')]}" force_save="1"/>
+<!--                <field name="validate_treasurer_name" attrs="{'invisible': ['|','|',('state', '!=', 'posted'),-->
+<!--            ('validate_treasurer','!=',True),('type','!=','in_invoice')]}" force_save="1"/>-->
             </xpath>
 
         </field>
@@ -114,9 +107,9 @@
 <!--                       attrs="{'invisible': [('state', '!=', 'posted')]}"-->
 <!--                       widget="boolean_toggle" groups="account.group_account_manager"/>-->
 
-                <field name="validate_treasurer_name"
-                       invisible="context.get('default_type') != 'in_invoice'"
-                       attrs="{'invisible': ['|',('state', '!=', 'posted'),('type','!=','in_invoice')]}"/>
+<!--                <field name="validate_treasurer_name"-->
+<!--                       invisible="context.get('default_type') != 'in_invoice'"-->
+<!--                       attrs="{'invisible': ['|',('state', '!=', 'posted'),('type','!=','in_invoice')]}"/>-->
 
 
 
