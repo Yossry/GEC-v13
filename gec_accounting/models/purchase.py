@@ -13,23 +13,6 @@ class PurchaseOrderWarehouse(models.Model):
 
     @api.model
     def create(self, vals):
-        company_id = vals.get('company_id',
-                              self.default_get(['company_id'])['company_id'])
-        if vals.get('name', 'New') == 'New':
-            seq_date = None
-            if 'date_order' in vals:
-                seq_date = fields.Datetime.context_timestamp(self,
-                                                             fields.Datetime.to_datetime(
-                                                                 vals[
-                                                                     'date_order']))
-            vals['name'] = self.env['ir.sequence'].with_context(
-                force_company=company_id).next_by_code('purchase.order',
-                                                       sequence_date=seq_date) or '/'
-        return super(PurchaseOrder,
-                     self.with_context(company_id=company_id)).create(vals)
-
-    @api.model
-    def create(self, vals):
         bg = self.env['stock.picking.type'].browse(vals.get('picking_type_id'))
         wh = self.env['stock.warehouse'].browse(bg.warehouse_id.id)
         p = 'p'

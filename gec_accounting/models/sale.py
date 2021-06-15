@@ -18,7 +18,7 @@ class SaleOrderWarehouse(models.Model):
         if vals.get('name', _('New')) == _('New'):
             if self.company_id.id == 2:
                 vals['name'] = self.env['ir.sequence'].next_by_code(
-                    wh.code.lower()) or _('New')
+                    wh.code.lower())
         res = super(SaleOrderWarehouse, self).create(vals)
         return res
 
