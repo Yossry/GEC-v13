@@ -9,6 +9,7 @@ class ResPartner(models.Model):
     name = fields.Char(tracking=True)
     l10n_co_document_type = fields.Selection(tracking=True, string='Tipo de documento')
 
+
     vat = fields.Char(tracking=True)
 
     fname = fields.Char(string='Primer Nombre')
