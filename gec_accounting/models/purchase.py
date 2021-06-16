@@ -17,11 +17,9 @@ class PurchaseOrderWarehouse(models.Model):
         wh = self.env['stock.warehouse'].browse(bg.warehouse_id.id)
         p = 'p'
         if vals.get('name', 'New') == 'New':
-            if self.company_id.id == 2:
-                vals['name'] = self.env['ir.sequence'].next_by_code(
-                    '%s%s' % (wh.code.lower(), p))
+            if wh.code in ('HCALL', 'H52', 'H33', 'HD52', 'HDBQ', 'HSA', 'HSM', 'AKT'):
+                vals['name'] = self.env['ir.sequence'].next_by_code('%s%s' %(wh.code.lower(), p))
         res = super(PurchaseOrderWarehouse, self).create(vals)
-        print(res)
         return res
 
     @api.onchange('partner_ref')
@@ -30,45 +28,3 @@ class PurchaseOrderWarehouse(models.Model):
                                   self.partner_ref.upper()) \
             if self.partner_ref else self.partner_ref
 
-    @api.model
-    def create(self, vals):
-        if self.company_id and vals.get('name', '/') == '/':
-            if self.company_id.name == "YourFirstCompanyName":  # Company1
-                seq_id = self.pool.get('ir.model.data').get_object_reference(
-                        self._cr,
-                        self._uid,
-                        'sale_order',
-                        'YourCompany1SequenceID')[
-                        1]
-                self.id = self.pool.get('ir.sequence').get_id(self._cr,
-                                                              self._uid,
-                                                              seq_id, 'id',
-                                                              self._context)
-                self.name = self.id
-
-            if self.company_id.name == "YourSecondCompanyName":  # Company2
-                seq_id = \
-                    self.pool.get('ir.model.data').get_object_reference(
-                        self._cr,
-                        self._uid,
-                        'sale_order',
-                        'YourCompany2SequenceID')[
-                        1]
-                self.name = self.pool.get('ir.sequence').get_id(self._cr,
-                                                                self._uid,
-                                                                seq_id, 'id',
-                                                                self._context)
-
-            if self.company_id.name == "YourThirdCompanyName":  # Company3
-                seq_id = \
-                    self.pool.get('ir.model.data').get_object_reference(
-                        self._cr,
-                        self._uid,
-                        'sale_order',
-                        'YourCompany3SequenceID')[
-                        1]
-                self.name = self.pool.get('ir.sequence').get_id(self._cr,
-                                                                self._uid,
-                                                                seq_id, 'id',
-                                                                self._context)
-        return super(sale_order, self).create(vals)
