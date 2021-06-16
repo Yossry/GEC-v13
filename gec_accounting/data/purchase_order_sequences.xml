@@ -22,7 +22,7 @@
             <field name="prefix">P</field>
             <field name="suffix">/H52</field>
             <field name="padding">0</field>
-            <field name="number_next">54</field>
+            <field name="number_next">58</field>
             <field name="number_increment">1</field>
             <field name="company_id">2</field>
             <field name="implementation">no_gap</field>
@@ -36,7 +36,7 @@
             <field name="prefix">P</field>
             <field name="suffix">/H33</field>
             <field name="padding">0</field>
-            <field name="number_next">37</field>
+            <field name="number_next">38</field>
             <field name="number_increment">1</field>
             <field name="company_id">2</field>
             <field name="implementation">no_gap</field>
@@ -50,7 +50,7 @@
             <field name="prefix">P</field>
             <field name="suffix">/HD52</field>
             <field name="padding">0</field>
-            <field name="number_next">7</field>
+            <field name="number_next">4</field>
             <field name="number_increment">1</field>
             <field name="company_id">2</field>
             <field name="implementation">no_gap</field>
@@ -78,7 +78,7 @@
             <field name="prefix">P</field>
             <field name="suffix">/HSA</field>
             <field name="padding">0</field>
-            <field name="number_next">4</field>
+            <field name="number_next">7</field>
             <field name="number_increment">1</field>
             <field name="company_id">2</field>
             <field name="implementation">no_gap</field>
