@@ -87,7 +87,7 @@ class ResPartner(models.Model):
     @api.onchange('l10n_co_document_type')
     def doc_type_onchange(self):
         if self.company_type == 'person':
-            if self.l10n_co_document_type == 'id_document' or self.l10n_co_document_type == 'rut':
+            if self.l10n_co_document_type in ['id_document', 'rut', 'civil_registration', ]:
                 self.l10n_co_document_type = 'national_citizen_id'
 
         if self.company_type == 'company':
