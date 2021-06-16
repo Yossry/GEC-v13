@@ -17,9 +17,10 @@
                 </xpath>
 
                 <xpath expr="//field[@name='currency_id']" position="after">
-                    <field name="bank_quote" placeholder="EJ: 1000000" required="1"
+                    <field name="bank_quote" placeholder="EJ: 1000000"
                            attrs="{'required' : [('operation_type', '=', 'obli_financiera')], 'invisible': [('operation_type', '=', 'terceros')]}"/>
-                    <field name="credit_rate" attrs="{'invisible': [('operation_type', '=', 'terceros')]}" />
+                    <field name="credit_rate" placeholder="Tasa del crédito"
+                           attrs="{'required' : [('operation_type', '=', 'obli_financiera')], 'invisible': [('operation_type', '=', 'terceros')]}" />
                 </xpath>
 
                 <xpath expr="//field[@name='code']" position="attributes">

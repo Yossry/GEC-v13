@@ -17,7 +17,7 @@ class AnalyticAccount(models.Model):
 
     term = fields.Integer(string='Plazos')
 
-    credit_rate = fields.Integer(string='Tasa')
+    credit_rate = fields.Char(string='Tasa')
 
     bank_quote = fields.Monetary(string='Cupo Bancario')
 
