@@ -68,7 +68,7 @@ class ResPartner(models.Model):
             if self.name:
                 self.name = self.name.upper()
             self.fname = self.sname = self.flastname = self.slastname = ''
-        # if self.company_type == 'person':
+        if self.company_type == 'person':
             self.l10n_co_document_type = 'national_citizen_id'
 
     @api.onchange('vat')
