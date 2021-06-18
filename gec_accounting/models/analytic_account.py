@@ -13,7 +13,9 @@ class AnalyticAccount(models.Model):
         [('ordinario', 'Ordinario'), ('ordinario_lp', 'Ordinario Largo Plazo'),
          ('credi_express', 'CrediExpress'), ('virtual', 'Virtual'),
          ('tesoreria', 'Tesoreria'), ('leasing', 'Leasing'),
-         ('factoring', 'Factoring')], string='Tipo de crédito')
+         ('factoring', 'Factoring'),('rotativo', 'Rotativo'),
+         ('credifast','CrediFast'),('t_credito','Tarjeta de Crédito')],
+        string='Tipo de crédito')
 
     term = fields.Integer(string='Plazos')
 
