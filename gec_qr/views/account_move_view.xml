@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="qr_inherit_account_move" model="ir.ui.view">
+        <field name="name">qr.inherit.account.move</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+
+
+            <xpath expr="//page[@name='other_info']" position="after">
+                <page name='electronic_invoice' string="Factura Electrónica" attrs="{'invisible': [('type', 'not in', ['out_invoice', 'out_refund'])]}">
+                    <group id="other_tab_group">
+                        <group string="Datos DIAN">
+                        </group>
+
+                        <group string="Código">
+                            <field name="qr_code" widget='image'/>
+                        </group>
+
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
