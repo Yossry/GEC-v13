@@ -87,17 +87,8 @@ class ResPartner(models.Model):
     @api.onchange('l10n_co_document_type')
     def doc_type_onchange(self):
         if self.company_type == 'person':
-            if self.l10n_co_document_type in ['id_document', 'rut', 'civil_registration', 'id_card', 'residence_document', 'external_id', 'diplomatic_card']:
+            if self.l10n_co_document_type in ['id_document', 'rut', 'civil_registration', 'residence_document', 'external_id', 'diplomatic_card']:
                 self.l10n_co_document_type = 'national_citizen_id'
         if self.company_type == 'company':
             self.l10n_co_document_type = 'rut'
-
-class ResPartnerBank(models.Model):
-    _inherit = 'res.partner.bank'
-
-    # @api.model
-    # def _get_supported_account_types(self):
-    #     return [('bank', _('Normal'))]
-
-    acc_type = fields.Selection(selection=lambda x: x.env['res.partner.bank'].get_supported_account_types(), compute='_compute_acc_type', string='Type', help='Bank account type: Normal or IBAN. Inferred from the bank account number.')
 
