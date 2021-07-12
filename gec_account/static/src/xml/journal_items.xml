@@ -1,0 +1,29 @@
+<templates>
+    <div t-name="gec_account.journalItems">
+        <div>
+            <t t-if="widget.data.account_id and widget.data.partner_id">
+                <a tabindex="0" class="fa fa-info-circle text-primary"/>
+            </t>
+        </div>
+    </div>
+
+    <div t-name="gec_account.journalItemsDetailPopOver">
+        <table>
+            <tbody>
+                <t t-if="widget.data.account_id and widget.data.partner_id">
+                    <tr>
+                        <td><strong>Apuntes</strong></td>
+                    </tr>
+                    <tr>
+                        <t t-esc='data.test_field'/>
+                    </tr>
+                </t>
+            </tbody>
+            <button class="text-left btn btn-link action_open_forecast"
+                type="button">
+            <i class="fa fa-fw o_button_icon fa-arrow-right"></i>
+            View Forecast
+        </button>
+        </table>
+    </div>
+</templates>
