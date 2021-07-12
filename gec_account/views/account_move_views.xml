@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="values_inherit_account_move" model="ir.ui.view">
+        <field name="name">values.inherit.account.move</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='line_ids']/tree//field[@name='name']" position="after">
+                <field name="test_field"/>
+                <widget name="customerBalances" width="20px"/>
+            </xpath>
+            <xpath expr="//field[@name='line_ids']/form//field[@name='name']" position="after">
+                <field name="test_field"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
