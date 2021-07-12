@@ -72,13 +72,6 @@
                     <field widget="statinfo" name="account_move_count"/>
                 </button>
             </xpath>
-
-            <!--        <xpath expr="//page[@name='internal_notes']" position="after">-->
-            <!--             <page name='documents' string="Documentos">-->
-
-            <!--            </page>-->
-            <!--        </xpath>-->
-
         </field>
     </record>
 
@@ -112,7 +105,6 @@
 
         </field>
     </record>
-
 
     <record model="ir.ui.view" id="acc_type_inherit_res_partner_bank">
         <field name="name">acc.type.inherit.res.partner.bank</field>
