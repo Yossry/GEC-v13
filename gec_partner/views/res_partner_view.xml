@@ -6,8 +6,8 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
 
-            <field name="is_company" position="replace">
-                <field name="is_company" eval='False'></field>
+            <field name="l10n_co_verification_code" position="attributes">
+                <attribute name="invisible">0</attribute>
             </field>
 
             <xpath expr="//div[hasclass('o_row')]" position="before">
@@ -65,7 +65,7 @@
                                                       ('edit_name', '=', False)]}</attribute>
             </xpath>
 
-            <xpath expr="//form[1]/sheet[1]/div[@name='button_box']/contactsync[1]"
+            <xpath expr="//form[1]/sheet[1]/div[@name='button_box']/button[@name='%(purchase.act_res_partner_2_supplier_invoices)d']"
                    position="after">
                 <button class="oe_stat_button" icon="fa-pencil-square-o" type="action"
                         name="gec_partner.action_account_moves_line_res_partner">
