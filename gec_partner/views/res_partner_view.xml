@@ -109,6 +109,10 @@
                 <attribute name="optional">hide</attribute>
             </xpath>
 
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="contador"/>
+            </xpath>
+
         </field>
     </record>
 

@@ -34,8 +34,11 @@ class ResPartner(models.Model):
             record['account_move_count'] = dic.get(record.id, 0)
 
     def _compute_journals(self):
-        res = self.env['account.move.line'].search([('partner_id', '=',self.ids)])
-        self.contador = len(res)
+        # self.ensure_one()
+        for partner in self:
+            res = self.env['account.move.line'].search([('partner_id', '=',partner.id)])
+            partner.contador = len(res)
+
     @api.model
     def create(self, vals):
         res = super(ResPartner, self).create(vals)
