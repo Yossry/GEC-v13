@@ -10,6 +10,11 @@
                 <attribute name="invisible">0</attribute>
             </field>
 
+            <field name="category_id" position="after">
+                <field name="contador" />
+            </field>
+
+
             <xpath expr="//div[hasclass('o_row')]" position="before">
                 <div class='o_row'>
                     <field name="fname" placeholder="Primer Nombre"
@@ -31,6 +36,7 @@
                            attrs="{'invisible': [('company_type', '=', 'company')],
                                 'readonly': [('account_move_count', '>', 0),
                                              ('edit_name', '=', False)]}"/>
+
                 </div>
             </xpath>
 

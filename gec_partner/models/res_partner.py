@@ -20,6 +20,7 @@ class ResPartner(models.Model):
                                help='Seleccionar si se autoriza la modificación del contacto, teniendo en cuenta que ya tiene apuntes contables.')
     account_move_count = fields.Integer(string='Apuntes Contables',
                                         compute='_compute_account_move_line_count')
+    contador = fields.Char(string='Total apuntes', compute='_compute_journals')
 
     # Looking for journal items
     @api.model
@@ -32,6 +33,9 @@ class ResPartner(models.Model):
         for record in self:
             record['account_move_count'] = dic.get(record.id, 0)
 
+    def _compute_journals(self):
+        res = self.env['account.move.line'].search([('partner_id', '=',self.ids)])
+        self.contador = len(res)
     @api.model
     def create(self, vals):
         res = super(ResPartner, self).create(vals)
