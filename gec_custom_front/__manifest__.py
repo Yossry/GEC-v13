@@ -13,7 +13,7 @@
     'author': 'Nodier Vasquez (GE-Camacho)',
     'version': '1.0',
     "category": "Extra Tools",
-    'depends': ['purchase'],
+    'depends': ['purchase','purchase_product_matrix'],
     'data': ['views/purchase_views.xml'],
     'installable': True,
 
