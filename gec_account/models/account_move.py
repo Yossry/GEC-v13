@@ -1,11 +1,13 @@
 from odoo import api, fields, models, _
-from odoo.exceptions import UserError, ValidationError, Warning
 
 
 class AccountMove(models.Model):
     _inherit = 'account.move.line'
 
-    test_field = fields.Char('Campo de prueba')
+    total_field = fields.Char('Campo de prueba')
+    virtual_debe = fields.Char('Debe')
+    virtual_haber = fields.Char('Haber')
+    virtual_balance = fields.Char('Balance')
 
     @api.onchange('account_id', 'partner_id')
     def validacion(self):
@@ -25,7 +27,11 @@ class AccountMove(models.Model):
                  ', Haber: ' + "{:.2f}".format(credit)+ \
                  ', Balance: '+ "{:.2f}".format(total)
 
-            self.test_field = tx
+            self.virtual_debe = "{:,.2f}".format(debit)
+            self.virtual_haber = "{:,.2f}".format(credit)
+            self.virtual_balance = "{:,.2f}".format(total)
+
+            self.total_field = tx
             # raise UserError(tx)
 
     def partner_balances(self):
