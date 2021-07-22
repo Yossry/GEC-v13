@@ -16,7 +16,7 @@
     'author': 'Nodier Vasquez (GE-Camacho)',
     'version': '1.0',
     "category": "Extra Tools",
-    'depends': ['account'],
+    'depends': ['account','account_accountant'],
     'data': [
         'views/account_move_views.xml',
         'views/assets.xml',

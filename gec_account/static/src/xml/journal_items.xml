@@ -1,7 +1,7 @@
-<templates>
+<template id="template" xml:space="preserve">
     <div t-name="gec_account.journalItems">
         <div>
-            <t t-if="widget.data.account_id and widget.data.partner_id">
+            <t t-if="widget.data.account_id != false &amp;&amp; widget.data.partner_id != false">
                 <a tabindex="0" class="fa fa-info-circle text-primary"/>
             </t>
         </div>
@@ -10,20 +10,39 @@
     <div t-name="gec_account.journalItemsDetailPopOver">
         <table>
             <tbody>
-                <t t-if="widget.data.account_id and widget.data.partner_id">
+                <t t-if="data.account_id != false &amp;&amp; data.partner_id != false">
+                        <tr>
+                            <td>
+                                <strong>Cuenta:</strong>
+                            </td>
+                        <td><t t-esc='data.account_id.data.display_name'/></td>
+                        </tr>
+
                     <tr>
-                        <td><strong>Apuntes</strong></td>
-                    </tr>
+                            <td>
+                                <strong>Debe:</strong>
+                            </td>
+                        <td>$ <t t-esc='data.virtual_debe'/></td>
+                        </tr>
                     <tr>
-                        <t t-esc='data.test_field'/>
-                    </tr>
+                            <td>
+                                <strong>Haber:</strong>
+                            </td>
+                        <td>$ <t t-esc='data.virtual_haber'/></td>
+                        </tr>
+                    <tr>
+                            <td>
+                                <strong>Balance:</strong>
+                            </td>
+                        <td>$ <t t-esc='data.virtual_balance'/></td>
+                        </tr>
                 </t>
+<!--                <t t-if="data.virtual_debe == false &amp;&amp; data.virtual_haber == false &amp;&amp; data.virtual_balance == false">-->
+<!--                    <td>-->
+<!--                        <strong>Información reservada para asientos contables</strong>-->
+<!--                    </td>-->
+<!--                </t>-->
             </tbody>
-            <button class="text-left btn btn-link action_open_forecast"
-                type="button">
-            <i class="fa fa-fw o_button_icon fa-arrow-right"></i>
-            View Forecast
-        </button>
         </table>
     </div>
-</templates>
+</template>
