@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="gec_custom_form_inherit" model="ir.ui.view">
+            <field name="name">front.gec_custom.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree//field[@name='product_template_id']" position="attributes">
+                    <attribute name="options">{'no_create_edit': True, 'no_create': True}</attribute>
+                </xpath>
+                <xpath expr="//form//field[@name='product_template_id']" position="attributes">
+                    <attribute name="options">{'no_create_edit': True, 'no_create': True}</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
