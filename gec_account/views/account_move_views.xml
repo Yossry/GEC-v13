@@ -13,6 +13,7 @@
                 <field name="virtual_balance" invisible="1"/>
             </xpath>
 
+
             <xpath expr="//field[@name='company_id']" position="after">
                 <button name="gec_account.action_account_moves_line_partner"
                         type="action" string="Apuntes"
