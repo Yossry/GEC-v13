@@ -32,16 +32,3 @@ class AccountMove(models.Model):
             self.virtual_balance = "{:,.2f}".format(total)
 
             self.total_field = tx
-            # raise UserError(tx)
-
-    def partner_balances(self):
-        return {
-            'name': 'My Window',
-            'domain': [],
-            'res_model': 'account.move',
-            'type': 'ir.actions.act_window',
-            'view_mode': 'form',
-            'view_type': 'form',
-            'context': {},
-            'target': 'new',
-        }

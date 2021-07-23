@@ -2,52 +2,57 @@
     <div t-name="gec_account.journalItems">
         <div>
             <t t-if="widget.data.account_id != false &amp;&amp; widget.data.partner_id != false">
-                <a tabindex="0" class="fa fa-info-circle text-primary"/>
+                <t t-if="widget.data.virtual_balance == '0.00' || widget.data.virtual_balance == false">
+                    <a tabindex="0" class="fa fa-info-circle text-danger"/>
+                </t>
+                <t t-else="">
+                    <a tabindex="0" class="fa fa-info-circle text-primary"/>
+                </t>
             </t>
         </div>
     </div>
 
     <div t-name="gec_account.journalItemsDetailPopOver">
-        <table>
-            <tbody>
-                <t t-if="data.account_id != false &amp;&amp; data.partner_id != false">
+        <t t-if="data.account_id != false &amp;&amp; data.partner_id != false">
+            <t t-if="data.virtual_balance === false">
+                <td><strong>Información reservada para asientos contables</strong></td>
+            </t>
+            <t t-else="">
+                <table>
+                    <tbody>
                         <tr>
                             <td>
                                 <strong>Cuenta:</strong>
                             </td>
-                        <td><t t-esc='data.account_id.data.display_name'/></td>
+                            <td><t t-esc='data.account_id.data.display_name'/></td>
                         </tr>
-
-                    <tr>
+                        <tr>
                             <td>
                                 <strong>Debe:</strong>
                             </td>
-                        <td>$ <t t-esc='data.virtual_debe'/></td>
+                            <td>$ <t t-esc='data.virtual_debe'/></td>
                         </tr>
-                    <tr>
+                        <tr>
                             <td>
                                 <strong>Haber:</strong>
                             </td>
-                        <td>$ <t t-esc='data.virtual_haber'/></td>
+                            <td>$ <t t-esc='data.virtual_haber'/></td>
                         </tr>
-                    <tr>
+                        <tr>
                             <td>
                                 <strong>Balance:</strong>
                             </td>
-                        <td>$ <t t-esc='data.virtual_balance'/></td>
+                            <td>$ <t t-esc='data.virtual_balance'/></td>
                         </tr>
-                </t>
-<!--                <t t-if="data.virtual_debe == false &amp;&amp; data.virtual_haber == false &amp;&amp; data.virtual_balance == false">-->
-<!--                    <td>-->
-<!--                        <strong>Información reservada para asientos contables</strong>-->
-<!--                    </td>-->
-<!--                </t>-->
-            </tbody>
-        </table>
-        <button class="text-left btn btn-link action_open_journal_items"
-                type="button">
-                    <i class="fa fa-fw o_button_icon fa-arrow-right"></i>
-            Apuntes Contables
-                </button>
+                    </tbody>
+                </table>
+                <button class="text-left btn btn-link action_open_journal_items" type="button">
+                        <i class="fa fa-fw o_button_icon fa-arrow-right"></i>
+                    Apuntes Contables
+                 </button>
+            </t>
+        </t>
+
+
     </div>
 </template>

@@ -51,30 +51,18 @@ odoo.define('gec_account.customerBalances', function (require) {
 
             var $journalItemsButton = $content.find('.action_open_journal_items');
             $journalItemsButton.on('click', function(ev) {
-
                 ev.stopPropagation();
+//                Cargamos la acción creada para redireccionar a la vista
                 data_manager.load_action('gec_account.action_account_moves_line_partner').then(function (action) {
-                    // Change action context to choose a specific date and product(s)
-                    // As grid_anchor is set to now() by default in the data, we need
-                    // to load the action first, change the context then launch it via do_action
-                    // additional_context cannot replace a context value, only add new
-                    //
-                    // in case of kit product, the forecast view show the kit's components
-                    console.log('SELF =>',self.data.account_id)
                     self._rpc({
                         model: 'account.move.line',
                         method: 'search',
                         args: [[['partner_id','=',self.data.partner_id.data.id]]]
                     }).then(function (res) {
-                        console.log('ACTION',action)
-                        console.log('RES',res)
-//                        var additional_context = {};
-//                        additional_context.grid_anchor = self.data.delivery_date_grid;
-//                        additional_context.search_default_warehouse_id = [self.data.warehouse_id.data.id];
-//                        action.context = new Context(action.context, additional_context);
                         action.domain = [
                             ['partner_id', '=', self.data.partner_id.data.id],
-                            ['account_id', '=', self.data.account_id.data.id]
+                            ['account_id', '=', self.data.account_id.data.id],
+                            ['move_id', '!=', '/']
 
                         ];
                         self.do_action(action);
