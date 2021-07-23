@@ -13,7 +13,6 @@
                 <field name="virtual_balance" invisible="1"/>
             </xpath>
 
-
         </field>
     </record>
 

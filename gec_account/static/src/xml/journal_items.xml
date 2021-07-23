@@ -1,4 +1,4 @@
-<template id="template" xml:space="preserve">
+v<template id="template" xml:space="preserve">
     <div t-name="gec_account.journalItems">
         <div>
             <t t-if="widget.data.account_id != false &amp;&amp; widget.data.partner_id != false">
@@ -52,8 +52,5 @@
                  </button>
             </t>
         </t>
-
-
-
     </div>
 </template>

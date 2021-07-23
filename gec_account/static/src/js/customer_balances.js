@@ -10,8 +10,6 @@ odoo.define('gec_account.customerBalances', function (require) {
     var widget_registry = require('web.widget_registry');
     var config = require('web.config');
 
-    var widget_registry = require('web.widget_registry');
-    var config = require('web.config');
 
     var _t = core._t;
 
@@ -23,7 +21,6 @@ odoo.define('gec_account.customerBalances', function (require) {
 
         init: function (parent, params) {
             this.data = params.data;
-
             this._super(parent);
         },
 
@@ -73,7 +70,6 @@ odoo.define('gec_account.customerBalances', function (require) {
                 });
             });
 
-
             var options = {
                 content: $content,
                 html: true,
@@ -88,7 +84,6 @@ odoo.define('gec_account.customerBalances', function (require) {
         _onClickButton: function () {
             this.$el.find('.fa-info-circle').prop('special_click', true);
         },
-
 
     });
 
