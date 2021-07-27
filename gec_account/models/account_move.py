@@ -1,13 +1,13 @@
 from odoo import api, fields, models, _
 
 
-class AccountMove(models.Model):
+class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'
 
-    total_field = fields.Char('Campo de prueba')
     virtual_debe = fields.Char('Debe')
     virtual_haber = fields.Char('Haber')
     virtual_balance = fields.Char('Balance')
+    show_widget = fields.Boolean('M_W')
 
     @api.onchange('account_id', 'partner_id')
     def validacion(self):
@@ -23,12 +23,22 @@ class AccountMove(models.Model):
                     credit += line.credit
 
             total = debit - credit
-            tx = 'Debe: ' + "{:.2f}".format(debit) + \
-                 ', Haber: ' + "{:.2f}".format(credit)+ \
-                 ', Balance: '+ "{:.2f}".format(total)
 
             self.virtual_debe = "{:,.2f}".format(debit)
             self.virtual_haber = "{:,.2f}".format(credit)
             self.virtual_balance = "{:,.2f}".format(total)
 
-            self.total_field = tx
+    def compute_show_balance(self):
+        self.show_widget = False
+
+class AccountMove(models.Model):
+    _inherit = 'account.move'
+
+    test_f = fields.Char('test')
+
+    @api.onchange('type')
+    def compute_show_balance(self):
+        if self.type == 'entry':
+            for line in self.line_ids:
+                line.show_widget = True
+
