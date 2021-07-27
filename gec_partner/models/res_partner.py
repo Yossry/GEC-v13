@@ -84,18 +84,19 @@ class ResPartner(models.Model):
     #Replace especial chars
     @api.onchange('vat')
     def vat_onchange(self):
-        # if self.company_type == 'person':
-        if self.l10n_co_document_type != 'passport':
-            self.vat = re.sub(r'([\D])', '', self.vat) if self.vat \
-                else self.vat
-        else:
-            self.vat = re.sub(r'([\W _])', '', self.vat) if self.vat \
-                else self.vat
-        # if self.company_type == 'company':
-        #     self.vat = re.sub(r'([a-zA-Z.!"#$%&()+=,;*:/ ])', '',
-        #                       self.vat) if self.vat else self.vat
 
-    # Select specific doc_types for user type
+        if self.company_type == 'person':
+            if self.l10n_co_document_type != 'passport':
+                self.vat = re.sub(r'([\D])', '', self.vat) if self.vat \
+                    else self.vat
+            else:
+                self.vat = re.sub(r'([\W _])', '', self.vat) if self.vat \
+                    else self.vat
+        if self.company_type == 'company':
+            self.vat = re.sub(r'([a-zA-Z.!"#$%&()+=,;*: ])', '',
+                              self.vat) if self.vat else self.vat
+
+
     @api.onchange('l10n_co_document_type')
     def doc_type_onchange(self):
         if self.company_type == 'person':
