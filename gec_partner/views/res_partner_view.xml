@@ -10,11 +10,6 @@
                 <attribute name="invisible">0</attribute>
             </field>
 
-            <field name="category_id" position="after">
-                <field name="contador" />
-            </field>
-
-
             <xpath expr="//div[hasclass('o_row')]" position="before">
                 <div class='o_row'>
                     <field name="fname" placeholder="Primer Nombre"
@@ -107,10 +102,6 @@
 
             <xpath expr="//field[@name='company_id']" position="attributes">
                 <attribute name="optional">hide</attribute>
-            </xpath>
-
-            <xpath expr="//field[@name='company_id']" position="after">
-                <field name="contador"/>
             </xpath>
 
         </field>
