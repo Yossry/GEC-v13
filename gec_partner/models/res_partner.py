@@ -81,7 +81,7 @@ class ResPartner(models.Model):
                 self.vat = re.sub(r'([\W _])', '', self.vat) if self.vat \
                     else self.vat
         if self.company_type == 'company':
-            self.vat = re.sub(r'([a-zA-Z.!"#$%&()+=,;*:/ ])', '',
+            self.vat = re.sub(r'([a-zA-Z.!"#$%&()+=,;*: ])', '',
                               self.vat) if self.vat else self.vat
 
     @api.onchange('l10n_co_document_type')
