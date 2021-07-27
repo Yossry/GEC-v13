@@ -7,8 +7,8 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     name = fields.Char(tracking=True)
-    l10n_co_document_type = fields.Selection(tracking=True,
-                                             string='Tipo de documento')
+    l10n_co_document_type = fields.Selection(tracking=True, string='Tipo de documento')
+
 
     vat = fields.Char(tracking=True)
 
@@ -20,24 +20,15 @@ class ResPartner(models.Model):
                                help='Seleccionar si se autoriza la modificación del contacto, teniendo en cuenta que ya tiene apuntes contables.')
     account_move_count = fields.Integer(string='Apuntes Contables',
                                         compute='_compute_account_move_line_count')
-    contador = fields.Char(string='Total apuntes', compute='_compute_journals')
 
-    # Looking for journal items
     @api.model
     def _compute_account_move_line_count(self):
         results = self.env['account.move.line'].read_group(
             [('partner_id', 'in', self.ids)], ['partner_id'], ['partner_id'])
         dic = {}
-        for x in results:
-            dic[x['partner_id'][0]] = x['partner_id_count']
-        for record in self:
-            record['account_move_count'] = dic.get(record.id, 0)
-
-    def _compute_journals(self):
-        # self.ensure_one()
-        for partner in self:
-            res = self.env['account.move.line'].search([('partner_id', '=',partner.id)])
-            partner.contador = len(res)
+        for x in results: dic[x['partner_id'][0]] = x['partner_id_count']
+        for record in self: record[
+            'account_move_count'] = dic.get(record.id, 0)
 
     @api.model
     def create(self, vals):
@@ -70,7 +61,6 @@ class ResPartner(models.Model):
                 self.name = self.fname + ' ' + self.sname + ' ' + \
                             self.flastname + ' ' + self.slastname
 
-    #Select specific doc_type, and change fullname with upper
     @api.onchange('company_type', 'name')
     def company_onchange(self):
         if self.company_type == 'company':
@@ -81,10 +71,8 @@ class ResPartner(models.Model):
         if self.company_type == 'person':
             self.l10n_co_document_type = 'national_citizen_id'
 
-    #Replace especial chars
     @api.onchange('vat')
     def vat_onchange(self):
-
         if self.company_type == 'person':
             if self.l10n_co_document_type != 'passport':
                 self.vat = re.sub(r'([\D])', '', self.vat) if self.vat \
@@ -93,39 +81,13 @@ class ResPartner(models.Model):
                 self.vat = re.sub(r'([\W _])', '', self.vat) if self.vat \
                     else self.vat
         if self.company_type == 'company':
-            self.vat = re.sub(r'([a-zA-Z.!"#$%&()+=,;*: ])', '',
+            self.vat = re.sub(r'([a-zA-Z.!"#$%&()+=,;*:/ ])', '',
                               self.vat) if self.vat else self.vat
-
 
     @api.onchange('l10n_co_document_type')
     def doc_type_onchange(self):
         if self.company_type == 'person':
-            if self.l10n_co_document_type in ['id_document', 'rut',
-                                              'civil_registration',
-                                              'residence_document',
-                                              'external_id',
-                                              'diplomatic_card']:
+            if self.l10n_co_document_type in ['id_document', 'rut', 'civil_registration', 'residence_document', 'external_id', 'diplomatic_card']:
                 self.l10n_co_document_type = 'national_citizen_id'
         if self.company_type == 'company':
             self.l10n_co_document_type = 'rut'
-
-    #Override method to use only vat field
-    def _get_vat_without_verification_code(self):
-        self.ensure_one()
-        # last digit is the verification code, but it could have a - before
-        if self.l10n_co_document_type != 'rut' or self.vat == '222222222222':
-            return self.vat
-        else:
-            if self.vat and "-" in self.vat:
-                return self.vat.split('-')[0]
-            return self.vat
-
-    #Override method to use vc field
-    def _get_vat_verification_code(self):
-        self.ensure_one()
-        if self.l10n_co_document_type != 'rut':
-            return ''
-        else:
-            if self.vat and "-" in self.vat:
-                return self.vat.split('-')[1]
-            return self.l10n_co_verification_code
