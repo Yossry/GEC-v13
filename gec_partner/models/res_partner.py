@@ -26,9 +26,12 @@ class ResPartner(models.Model):
         results = self.env['account.move.line'].read_group(
             [('partner_id', 'in', self.ids)], ['partner_id'], ['partner_id'])
         dic = {}
-        for x in results: dic[x['partner_id'][0]] = x['partner_id_count']
-        for record in self: record[
-            'account_move_count'] = dic.get(record.id, 0)
+
+        for x in results:
+            dic[x['partner_id'][0]] = x['partner_id_count']
+        for record in self:
+            record['account_move_count'] = dic.get(record.id, 0)
+
 
     @api.model
     def create(self, vals):
