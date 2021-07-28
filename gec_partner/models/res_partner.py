@@ -111,7 +111,6 @@ class ResPartner(models.Model):
     # Override method to use only vat field
     def _get_vat_without_verification_code(self):
         self.ensure_one()
-        # last digit is the verification code, but it could have a - before
         if self.l10n_co_document_type != 'rut' or self.vat == '222222222222':
             return self.vat
         else:

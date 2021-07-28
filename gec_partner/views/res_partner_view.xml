@@ -31,7 +31,6 @@
                            attrs="{'invisible': [('company_type', '=', 'company')],
                                 'readonly': [('account_move_count', '>', 0),
                                              ('edit_name', '=', False)]}"/>
-
                 </div>
             </xpath>
 
