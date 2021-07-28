@@ -17,22 +17,17 @@
     6. En la vista de arbol se agregan los campos de numero de documento, primer nombre, segundo nombre, primer apellido y segundo apellido. \n
     7. Se validan que los números de documentos ingresados correspondan al tipo de documento.\n
     8. Se bloquea la modificación de los contactos una vez tenga apuntes contables en el sistema. Se permitirá la modificación si es aprobado por el departamento encargado y queda la trazabilidad de quien la modificación y quién la realizó, para tener trazabilidad.\n
-    
+    9. Se agrega el campo de dígito de verificación a la factura electrónica.\n
     
     """,
     'license': 'OEEL-1',
-    'author': 'GE-Camacho',
-    'version': '2.0',
+    'author': ' Nodier Vasquez - (GE-Camacho)',
+    'version': '13.0.1.0',
     "category": "Extra Tools",
-    # 'images': ['static/description/grupo_camacho.jpg'],
-    'depends': ['base','account','l10n_co'],
+    'depends': ['base','account','l10n_co_edi'],
     'data': [
         'views/res_partner_view.xml',
-
     ],
-    'installable': True,    
-    
-#     "license": "AGPL-3",
-    
+    'installable': True,
     
 }

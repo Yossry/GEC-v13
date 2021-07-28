@@ -73,12 +73,6 @@
                 </button>
             </xpath>
 
-            <!--        <xpath expr="//page[@name='internal_notes']" position="after">-->
-            <!--             <page name='documents' string="Documentos">-->
-
-            <!--            </page>-->
-            <!--        </xpath>-->
-
         </field>
     </record>
 
