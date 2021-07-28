@@ -10,17 +10,8 @@
                 <field name="virtual_debe" invisible="1"/>
                 <field name="virtual_haber" invisible="1"/>
                 <field name="virtual_balance" invisible="1"/>
-                <field name="show_widget"/>
+                <field name="show_widget" invisible="1"/>
                 <widget name="customer_balances" width="20px"/>
-            </xpath>
-
-            <xpath expr="//field[@name='type']" position="attributes">
-                <attribute name="invisible"/>
-                <attribute name="attrs">{}</attribute>
-            </xpath>
-
-            <xpath expr="//field[@name='company_id']" position="after">
-                <field name="test_f"/>
             </xpath>
 
         </field>

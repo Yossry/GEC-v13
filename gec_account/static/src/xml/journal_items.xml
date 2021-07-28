@@ -1,12 +1,14 @@
 <template id="template" xml:space="preserve">
     <div t-name="gec_account.journalItems">
         <div>
-            <t t-if="widget.data.account_id != false &amp;&amp; widget.data.partner_id != false">
-                <t t-if="widget.data.virtual_balance == '0.00' || widget.data.virtual_balance == false">
-                    <a tabindex="0" class="fa fa-info-circle text-danger"/>
-                </t>
-                <t t-else="">
-                    <a tabindex="0" class="fa fa-info-circle text-primary"/>
+            <t t-if="widget.data.show_widget">
+                <t t-if="widget.data.account_id != false &amp;&amp; widget.data.partner_id != false">
+                    <t t-if="widget.data.virtual_balance == '0.00' || widget.data.virtual_balance == false">
+                        <a tabindex="0" class="fa fa-info-circle text-danger"/>
+                    </t>
+                    <t t-else="">
+                        <a tabindex="0" class="fa fa-info-circle text-primary"/>
+                    </t>
                 </t>
             </t>
         </div>

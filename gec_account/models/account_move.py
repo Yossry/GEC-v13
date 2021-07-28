@@ -7,7 +7,7 @@ class AccountMoveLine(models.Model):
     virtual_debe = fields.Char('Debe')
     virtual_haber = fields.Char('Haber')
     virtual_balance = fields.Char('Balance')
-    show_widget = fields.Boolean('M_W')
+    show_widget = fields.Boolean('Show')
 
     @api.onchange('account_id', 'partner_id')
     def validacion(self):
@@ -34,9 +34,7 @@ class AccountMoveLine(models.Model):
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    test_f = fields.Char('test')
-
-    @api.onchange('type')
+    @api.onchange('type','line_ids')
     def compute_show_balance(self):
         if self.type == 'entry':
             for line in self.line_ids:

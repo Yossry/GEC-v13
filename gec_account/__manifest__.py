@@ -1,5 +1,5 @@
 {
-    'name': 'GEC: Account',
+    'name': 'GEC: Account Info',
     'summary':
         """
         Valor de asociado por cuentas.
