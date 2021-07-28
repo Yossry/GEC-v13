@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_backend_custom" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/gec_account/static/src/js/customer_balances.js"></script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

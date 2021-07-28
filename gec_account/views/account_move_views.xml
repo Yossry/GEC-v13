@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="values_inherit_account_move" model="ir.ui.view">
+        <field name="name">values.inherit.account.move</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='line_ids']/tree//field[@name='partner_id']" position="after">
+                <field name="virtual_debe" invisible="1"/>
+                <field name="virtual_haber" invisible="1"/>
+                <field name="virtual_balance" invisible="1"/>
+                <field name="show_widget" invisible="1"/>
+                <widget name="customer_balances" width="20px"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="action_account_moves_line_partner" model="ir.actions.act_window">
+        <field name="name">Apuntes Contables</field>
+        <field name="res_model">account.move.line</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
+
