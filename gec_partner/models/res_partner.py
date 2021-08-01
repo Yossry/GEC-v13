@@ -1,3 +1,5 @@
+from builtins import print
+
 from odoo import api, fields, models
 from odoo.exceptions import UserError
 import re
