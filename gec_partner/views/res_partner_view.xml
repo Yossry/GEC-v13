@@ -114,7 +114,7 @@
 
             <xpath expr="//field[@name='email']" position="after">
                 <field name="account_move_count" optional="hide"/>
-                <field name="edit_name" groups="base.group_erp_manager,account.group_account_user<" optional="hide"/>
+                <field name="edit_name" groups="base.group_erp_manager,account.group_account_user" optional="hide"/>
             </xpath>
 
         </field>
