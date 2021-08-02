@@ -24,7 +24,7 @@
     'author': ' Nodier Vasquez - (GE-Camacho)',
     'version': '13.0.1.0',
     "category": "Extra Tools",
-    'depends': ['base','account','l10n_co_edi'],
+    'depends': ['base','account','l10n_co_edi','l10n_co_edi_ubl_2_1'],
     'data': [
         'views/res_partner_view.xml',
     ],
