@@ -25,7 +25,7 @@
     </t>
     <t t-extend="OrderReceipt">
         <t t-jquery=".pos-receipt-order-data" t-operation="attributes">
-            <attribute name="t-att-style">"font-size: 14px"</attribute>
+            <attribute name="t-att-style">"font-size: 15px"</attribute>
         </t>
     </t>
 </templates>
